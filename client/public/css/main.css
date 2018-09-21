@@ -17,3 +17,15 @@
 .preference-button {
   cursor: pointer;
 }
+
+
+#logo {
+  background-image: url('../assets/logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+  margin: 10% auto 5% auto;
+
+
+}
