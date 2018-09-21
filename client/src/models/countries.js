@@ -15,7 +15,7 @@ const Countries = function (url) {
 // };
 
 Countries.prototype.getData = function (data) {
-    const url = (``);   //TODO Put API here
+    const url = (``);   //TODO Put  here
     console.log(url);
     const request = new Request(url);
     request.get()
