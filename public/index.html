@@ -1,15 +1,31 @@
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="./js/bundle.js"></script>
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/bundle.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Where now?</title>
+  </head>
+  <body>
+    <main id="content-container">
+      <div id="logo"></div>
+      <h1 id="name">Where now?</h1>
+      <div id="form-container">
+        <select name="occupation" id="occupation-select">
+          <option value=""></option>
+        </select>
+        <div id="preference-container">
+          <button id="cost-of-living-button" class="preference-button">Cost of living</button>
+          <button id="low-rent-button" class="preference-button">Low rent</button>
+          <button id="environment-button" class="preference-button">Environmental factors</button>
+          <button id="transportation-button" class="preference-button">Convenient transportation</button>
+          <button id="healthcare-button" class="preference-button">Healthcare</button>
+          <button id="safety-button" class="preference-button">Safety</button>
+        </div>
+        <button id="submit-form">Explore</button>
+      </div>
+    </main>
 
-
-
-</body>
+  </body>
 </html>

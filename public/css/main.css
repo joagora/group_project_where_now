@@ -1,0 +1,19 @@
+#content-container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#preference-container {
+  margin: auto;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.preference-button {
+  cursor: pointer;
+}
