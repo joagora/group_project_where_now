@@ -5,7 +5,7 @@ const FormView = function(formContainer) {
 }
 
 FormView.prototype.bindEvents = function() {
-  this.formContainer.addEventListener('#submit-form', (event) => {
+  this.formContainer.addEventListener('submit', (event) => {
     event.preventDefault();
     const completedForm = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', completedForm)
@@ -24,7 +24,7 @@ FormView.prototype.grabCheckboxes = function(form) {
 }
 
 FormView.prototype.getCheckedCheckboxes = function(checkboxes) {
-  const checkboxArray = Array.form(checkboxes);
+  const checkboxArray = Array.from(checkboxes);
   return checkboxArray.filter((checkbox) => {
     return checkbox.checked === true;
   })
