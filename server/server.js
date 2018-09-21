@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+
+//const cors = require('cors');
+//app.use(cors());
+//app.options('*', cors());
+
 //__dirname = current folder
 const publicPath = path.join(__dirname, '../client/public');
 const createRouter = require('./helpers/create_router.js');
