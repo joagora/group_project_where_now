@@ -16,11 +16,11 @@ Request.prototype.post = function (payload) {
     .then((response) => response.json());
 };
 
-Request.prototype.delete = function (id) {
-  return fetch(`${this.url}/${id}`, {
-    method: 'DELETE'
-  })
-    .then((response) => response.json());
-};
+// Request.prototype.delete = function (id) {
+//   return fetch(`${this.url}/${id}`, {
+//     method: 'DELETE'
+//   })
+//     .then((response) => response.json());
+// };
 
 module.exports = Request;
