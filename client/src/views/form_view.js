@@ -8,26 +8,34 @@ FormView.prototype.bindEvents = function() {
   this.formContainer.addEventListener('submit', (event) => {
     event.preventDefault();
     const completedForm = this.getSubmittedValues(event.target);
+    console.log(event);
     PubSub.publish('FormView:form-submitted', completedForm)
   })
 }
 
 FormView.prototype.getSubmittedValues = function(form) {
-  const checkboxes = this.grabCheckboxes(form);
-  const checkedCheckboxes = this.getCheckedCheckboxes(checkboxes)
-  console.log(checkedCheckboxes);
+  const preferenceSliders = this.grabSliders(form);
+
+  const sliderValues = this.getSlidersValues(preferenceSliders)
+  console.log(sliderValues);
 }
 
-FormView.prototype.grabCheckboxes = function(form) {
-  const checkboxes = document.querySelectorAll('.preference-button');
-  return checkboxes;
+FormView.prototype.grabSliders = function(form) {
+  const sliders = document.querySelectorAll('.preference-slider');
+  return sliders;
 }
 
-FormView.prototype.getCheckedCheckboxes = function(checkboxes) {
-  const checkboxArray = Array.from(checkboxes);
-  return checkboxArray.filter((checkbox) => {
-    return checkbox.checked === true;
-  })
+FormView.prototype.getSlidersValues = function(sliders) {
+  const sliderArray = Array.from(sliders);
+  console.log(sliderArray);
+  const valuesObject = sliderArray.map((element) => {
+    let object = {};
+    console.log(element.id);
+    object[element.id] = element.value;
+    return object;
+  });
+  return valuesObject;
+
 }
 
 
