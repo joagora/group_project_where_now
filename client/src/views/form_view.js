@@ -8,6 +8,7 @@ FormView.prototype.bindEvents = function() {
   this.formContainer.addEventListener('submit', (event) => {
     event.preventDefault();
     const formValues = this.getSubmittedValues(event.target);
+    console.log(formValues);
     PubSub.publish('FormView:form-submitted', formValues);
   })
 }
@@ -16,7 +17,7 @@ FormView.prototype.getSubmittedValues = function(form) {
   const preferenceSliders = this.grabSliders(form);
 
   const sliderValues = this.getSlidersValues(preferenceSliders)
-  console.log(sliderValues);
+  return sliderValues;
 }
 
 FormView.prototype.grabSliders = function(form) {
@@ -26,10 +27,10 @@ FormView.prototype.grabSliders = function(form) {
 
 FormView.prototype.getSlidersValues = function(sliders) {
   const sliderArray = Array.from(sliders);
-  console.log(sliderArray);
   const valuesObject = sliderArray.map((element) => {
     let object = {};
-    object[element.id] = element.value;
+    object['attribute'] = element.id;
+    object['value'] = element.value;
     return object;
   });
   return valuesObject;

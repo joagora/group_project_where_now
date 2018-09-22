@@ -23,16 +23,11 @@ CountriesProperties.prototype.getData = function(countries) {
       .then((data) => {
         country['details'] = data;
         this.countriesDetailsArray.push(country);
-        console.log(country);
       })
-      console.log(this.countriesDetailsArray);
-    //   .then((data) => {
-    //     const categoriesDetails = this.jobsData.results;
-    //     const categoriesLabels = categoriesDetails.map((category) => {
-    //       return category.label;
-    //     })
-    //     PubSub.publish('Jobs:categories-labels-ready', categoriesLabels);
-    //   })
+      .then((data) => {
+        PubSub.publish('CountriesProperties:countries-properties-ready', this.countriesDetailsArray);
+      })
+
   })
 
 }

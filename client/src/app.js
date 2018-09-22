@@ -5,6 +5,7 @@ const JobsSelectView = require('./views/jobs_select_view.js')
 const FormView = require('./views/form_view.js')
 const Countries = require('./models/countries');
 const CountriesProperties = require('./models/countries_properties.js');
+const CountriesFilter = require('./models/countries_filter.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const categoriesElement = document.querySelector('select#occupation-select')
@@ -21,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const countries = new Countries();
   countries.bindEvents();
-  
+
   const countriesProperties = new CountriesProperties();
   countriesProperties.bindEvents();
+
+  const countriesFilter = new CountriesFilter();
+  countriesFilter.bindEvents();
 })
