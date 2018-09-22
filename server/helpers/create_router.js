@@ -1,15 +1,17 @@
 const express = require('express');
 
-const createRouter = function(data){
-const router = express.Router();
+const createRouter = function(collection){
+  const router = express.Router();
 
+  router.get('/', (req, res) => {
+    collection
+      .find()
+      .toArray()
+      .then((docs) => {
+        res.json(docs);
+      })
+  })
+  return router;
+}
 
-//GET ALL Data
-    router.get('/', (req,res) => {
-        //when hit 'api/countries' return Data
-        res.json(data);
-    })
-
-return router;
-};
 module.exports = createRouter;

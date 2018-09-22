@@ -2,14 +2,18 @@ const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const Countries = function () {
-
+  this.countryList = null;
+  this.request = new Request(this.url);
 };
 
 
 Countries.prototype.bindEvents = function () {
-
+  this.getData();
 };
 
+Countries.prototype.getData = function() {
+  const url = "http://localhost:3000/api/countries";
+};
 //interate over each country and collect data for forEach
 //[{"country": "Azerbaijan",
 //"indexes": {
