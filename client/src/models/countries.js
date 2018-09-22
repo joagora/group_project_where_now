@@ -1,43 +1,33 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
-const Countries = function (url) {
-  this.url = 'http://localhost:3000/api/countries';
-  this.request = new Request(this.url);
+const Countries = function () {
+
 };
 
-//
-// Countries.prototype.bindEvents = function () {
-//
-//   PubSub.subscribe('CountriesView:form-submitted', (evt) => {
-//     this.postSighting(evt.detail);
-//   })
-// };
 
-Countries.prototype.getData = function (data) {
-    const url = (``);   //TODO Put  here
-    console.log(url);
-    const request = new Request(url);
-    request.get()
-        .then((data) => {
-            this.data = data;
-            //publish data to result_view
-            PubSub.publish('Countries:Form-result-calculated', this.data);
-            //Prove data are here
-            console.log('Countries.JS - Test API works' , this.data)
-        })
-        .catch((message) => {
-            console.error(message);
-        });
+Countries.prototype.bindEvents = function () {
+
 };
 
-// Countries.prototype.getData = function () {
-//   this.request.get()
-//     .then((sightings) => {
-//       PubSub.publish('Countries:data-loaded', sightings);
-//     })
-//     .catch(console.error);
-// };
+//interate over each country and collect data for forEach
+//[{"country": "Azerbaijan",
+//"indexes": {
+//"safety":
+//}
+//"country": "Azerbaijan",
+//"safety": "1232"}]
+
+//send it over to filter function
+//the filter will listen to the form then grab the array of preferencesForm
+//the filter will listen to the countryDataCollection model
+//the values that we want from the form is the keys from the api
+//it should call a filter method which will take array of prefences in order of importance and pass in as argument
+//once it is finished filtering its data set it should pop the first value
+//get
+//take country data set passed in as argument
+
+//take first preference and for each country create an object with country name and values
 
 
 module.exports = Countries;
