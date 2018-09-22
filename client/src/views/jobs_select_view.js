@@ -7,7 +7,7 @@ const JobsSelectView = function(container){
 }
 
 JobsSelectView.prototype.bindEvents = function(){
-  PubSub.subscribe('Categories-labels-ready', (event) => {
+  PubSub.subscribe('Jobs:categories-labels-ready', (event) => {
     const categories = event.detail;
     this.populateDropdown(categories);
   })

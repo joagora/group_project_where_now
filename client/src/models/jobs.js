@@ -23,7 +23,7 @@ Jobs.prototype.getData = function(){
       const categoriesLabels = categoriesDetails.map((category) => {
         return category.label;
       })
-      PubSub.publish('Categories-labels-ready', categoriesLabels);
+      PubSub.publish('Jobs:categories-labels-ready', categoriesLabels);
     })
 }
 

@@ -19,8 +19,8 @@ FormView.prototype.getSubmittedValues = function(form) {
 }
 
 FormView.prototype.grabCheckboxes = function(form) {
-  const checkboxes = document.querySelectorAll('.preference-button')
-  return checkboxes
+  const checkboxes = document.querySelectorAll('.preference-button');
+  return checkboxes;
 }
 
 FormView.prototype.getCheckedCheckboxes = function(checkboxes) {
