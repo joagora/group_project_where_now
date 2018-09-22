@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const Countries = function () {
   this.countryList = null;
-  this.request = new Request(this.url);
+  this.request = new Request("http://localhost:3000/api/countries");
 };
 
 
@@ -12,7 +12,11 @@ Countries.prototype.bindEvents = function () {
 };
 
 Countries.prototype.getData = function() {
-  const url = "http://localhost:3000/api/countries";
+  this.request.get()
+    .then((countryList) => {
+      PubSub.publish('Countries:countries-list-ready', countryList);
+    })
+    .catch(console.error);
 };
 //interate over each country and collect data for forEach
 //[{"country": "Azerbaijan",

@@ -15,8 +15,10 @@ MongoClient.connect('mongodb://localhost:27017')
     const countryListCollection = db.collection('country_list');
     const countriesRouter = createRouter(countryListCollection);
     app.use('/api/countries', countriesRouter);
+
   })
   .catch(console.error);
+
 
 app.listen(3000, function () {
   console.log(`App running on port ${ this.address().port }`);
