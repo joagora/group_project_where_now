@@ -15,8 +15,6 @@ CountriesFilter.prototype.bindEvents = function() {
   })
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
     this.countriesDetails = event.detail;
-    //we got an array of countries ready, write filter method
-
 
   })
 }
@@ -42,7 +40,7 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
   let validCountries = [];
   countries.forEach((country) => {
     const detailsKeys = Object.keys(country.details);
-    console.log(detailsKeys);
+
     if(detailsKeys.includes(attribute) === true) {
       validCountries.push(country);
     }
@@ -52,16 +50,22 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
   let filteredCountries = [];
-  console.log("yoyoyoyo");
 
   if(countriesToSort.length >= 6) {
-
-    console.log(attributes);
     let attributeToSortBy = attributes[0].attribute;
     let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
-    const countriesSorted = validCountries.sort((a, b) => {
-      return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
-    })
+
+    let countriesSorted = null;
+    if(attributeToSortBy === "health_care_index") {
+      countriesSorted = validCountries.sort((a, b) => {
+        return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
+      })
+    } else {
+      countriesSorted = validCountries.sort((a, b) => {
+        return a.details[`${attributeToSortBy}`] - b.details[`${attributeToSortBy}`];
+      })
+    }
+
     filteredCountries = this.halfDataSet(countriesSorted);
     attributes.shift();
     console.log(attributeToSortBy);
@@ -69,9 +73,6 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
   return filteredCountries;
-
-
-
 
 }
 
