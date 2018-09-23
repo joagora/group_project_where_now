@@ -9,11 +9,14 @@ CountriesFilter.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:form-submitted', (event) => {
     const sortedValues = this.sortFormValues(event.detail);
     this.sortedFormValues = sortedValues;
+    const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails)
+    const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
+    console.log(filteredByPreferences);
   })
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
     this.countriesDetails = event.detail;
     //we got an array of countries ready, write filter method
-    this.filterCountries(this.countriesDetails, this.sortedFormValues);
+
 
   })
 }
@@ -25,31 +28,56 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
   return sortedValues;
 }
 
-CountriesFilter.prototype.filterCountries = function(countriesToSort, attributes) {
+
+CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
+  let validCountries = this.filterInvalidCountries(countriesToSort, "quality_of_life_index");
+  console.log(validCountries);
+  const sortedCountries = validCountries.sort((a, b) => {
+    return b.details["quality_of_life_index"] - a.details["quality_of_life_index"];
+  })
+  return sortedCountries;
+}
+
+CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute) {
+  let validCountries = [];
+  countries.forEach((country) => {
+    const detailsKeys = Object.keys(country.details);
+    console.log(detailsKeys);
+    if(detailsKeys.includes(attribute) === true) {
+      validCountries.push(country);
+    }
+  })
+  return validCountries;
+}
+
+CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
   let filteredCountries = [];
+  console.log("yoyoyoyo");
+
   if(countriesToSort.length >= 6) {
-    let attributeToSortBy = attributes[0];
-    const countriesSorted = countriesToSort.sort((a, b) => {
+
+    console.log(attributes);
+    let attributeToSortBy = attributes[0].attribute;
+    let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
+    const countriesSorted = validCountries.sort((a, b) => {
       return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
     })
     filteredCountries = this.halfDataSet(countriesSorted);
     attributes.shift();
-    return this.filterCountries(filteredCountries, attributes);
-  } else {
-    filteredCountries = countriesToSort.slice(0, 3);
+    console.log(attributeToSortBy);
+    console.log(filteredCountries);
+    return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
   return filteredCountries;
 
 
-//check if the number of coutries to devide devided by 2 is less or equal to 3 (less or equal 6)
-//if it is, take the first 3 coutries from the Array
 
 
 }
 
 CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
   const halfLengthRoundedDown = Math.floor(dataToHalf.length/2);
-  const newDataSet = dataToHalf.splice(0, halfLengthRoundedDown);
+  const newDataSet = dataToHalf.slice(0, halfLengthRoundedDown);
   return newDataSet;
 }
 
