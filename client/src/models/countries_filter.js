@@ -26,14 +26,23 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
 }
 
 CountriesFilter.prototype.filterCountries = function(countriesToSort, attributes) {
-  let attributeToSortBy = attributes[0];
-  const countriesSorted = countriesToSort.sort((a, b) => {
-    return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
-  })
-  const filteredCountries = this.halfDataSet(countriesSorted);
-  attributes.shift();
+  let filteredCountries = [];
+  if(countriesToSort.length >= 6) {
+    let attributeToSortBy = attributes[0];
+    const countriesSorted = countriesToSort.sort((a, b) => {
+      return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
+    })
+    filteredCountries = this.halfDataSet(countriesSorted);
+    attributes.shift();
+    return this.filterCountries(filteredCountries, attributes);
+  } else {
+    filteredCountries = countriesToSort.slice(0, 3);
+  }
   return filteredCountries;
 
+
+//check if the number of coutries to devide devided by 2 is less or equal to 3 (less or equal 6)
+//if it is, take the first 3 coutries from the Array
 
 
 }
