@@ -11,7 +11,7 @@ describe('CountriesFilter', function () {
 
   beforeEach(function () {
     countriesFilter = new CountriesFilter();
-    values = ["safety_index"];
+    values = ["safety_index", "pollution_index"];
     country1 = {"name": "Afganistan", "details": {
     "safety_index": 63.608357498169745}};
     country2 = {"name": "Poland", "details": {
@@ -28,12 +28,18 @@ describe('CountriesFilter', function () {
   it('should be able filter countries by one category', function () {
   const sortedCountries = countriesFilter.filterCountries(countries, values);
   const actual = sortedCountries;
-  assert.deepStrictEqual(actual, [country2, country1, country4, country3, country5]);
+  assert.deepStrictEqual(actual, [country2, country1]);
 });
 
   it('should get half of the data', function () {
     const dataInHalf = countriesFilter.halfDataSet(countries);
     const actual = dataInHalf.length;
     assert.deepStrictEqual(actual, 2)
+  })
+
+  it('should remove the attribute that has been used', function () {
+    countriesFilter.filterCountries(countries, values);
+    const actual = values[0];
+    assert.deepStrictEqual(actual, "pollution_index");
   })
 })
