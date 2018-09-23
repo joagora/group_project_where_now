@@ -8,7 +8,6 @@ FormView.prototype.bindEvents = function() {
   this.formContainer.addEventListener('submit', (event) => {
     event.preventDefault();
     const formValues = this.getSubmittedValues(event.target);
-    console.log(formValues);
     PubSub.publish('FormView:form-submitted', formValues);
   })
 }
