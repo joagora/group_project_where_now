@@ -30,9 +30,17 @@ CountriesFilter.prototype.filterCountries = function(countriesToSort, attributes
   const countriesSorted = countriesToSort.sort((a, b) => {
     return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
   })
-  return countriesSorted
+  // this.halfDataSet(countriesSorted);
+  return countriesSorted;
+
   // attributes.pop();
 
+}
+
+CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
+  const halfLengthRoundedDown = Math.floor(dataToHalf.length/2);
+  const newDataSet = dataToHalf.splice(0, halfLengthRoundedDown);
+  return newDataSet;
 }
 
 module.exports = CountriesFilter;
