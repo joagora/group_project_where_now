@@ -12,9 +12,9 @@ CountriesFilter.prototype.bindEvents = function() {
     this.sortedFormValues = sortedValues;
     const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
-    // const filteredCountries = this.filter(this.countriesDetails, sortedValues);
-    const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
-    PubSub.publish('Countries:Form-result-calculated', transformedValues);
+
+    // const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
+    PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
   })
 
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
@@ -91,7 +91,7 @@ CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
 CountriesFilter.prototype.transformValuesToPercentages = function(countries) {
   countries.forEach((country) => {
     const details = country.details;
-    console.log(details);
+    //finish transforming data
   })
 }
 
