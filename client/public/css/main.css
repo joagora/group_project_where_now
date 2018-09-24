@@ -39,3 +39,8 @@
 tspan {
   display: none;
 }
+
+#mapid {
+  height: 400px;
+
+}

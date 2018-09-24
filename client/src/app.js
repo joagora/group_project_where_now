@@ -7,11 +7,15 @@ const Countries = require('./models/countries');
 const CountriesProperties = require('./models/countries_properties.js');
 const CountriesFilter = require('./models/countries_filter.js');
 const ResultView = require('./views/result_view.js');
+const Map = require('./models/map.js');
 
 document.addEventListener('DOMContentLoaded', () => {
+ 
+
   const categoriesElement = document.querySelector('select#occupation-select')
   const jobsSelectView = new JobsSelectView(categoriesElement);
   jobsSelectView.bindEvents();
+
 
   const jobs = new Jobs();
   jobs.bindEvents();
@@ -33,4 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultDiv = document.querySelector('#result');
   const resultView = new ResultView(resultDiv);
   resultView.bindEvents();
+
+  const map = new Map();
+  map.createMap();
+  
 })
