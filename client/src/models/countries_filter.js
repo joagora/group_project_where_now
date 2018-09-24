@@ -3,21 +3,25 @@ const PubSub = require('../helpers/pub_sub.js');
 const CountriesFilter = function() {
   this.countriesDetails = null;
   this.sortedFormValues = null;
+  this.filteredCountries = null;
 }
 
 CountriesFilter.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:form-submitted', (event) => {
     const sortedValues = this.sortFormValues(event.detail);
     this.sortedFormValues = sortedValues;
-    const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails)
+    const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
+    // const filteredCountries = this.filter(this.countriesDetails, sortedValues);
     console.log(filteredByPreferences);
+    PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
   })
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
     this.countriesDetails = event.detail;
 
   })
 }
+
 
 CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
   const sortedValues = valuesToSort.sort( (a, b) => {
@@ -29,7 +33,6 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
 
 CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
   let validCountries = this.filterInvalidCountries(countriesToSort, "quality_of_life_index");
-  console.log(validCountries);
   const sortedCountries = validCountries.sort((a, b) => {
     return b.details["quality_of_life_index"] - a.details["quality_of_life_index"];
   })
@@ -49,9 +52,11 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 }
 
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
-  let filteredCountries = [];
 
-  if(countriesToSort.length >= 6) {
+  let filteredCountries = [];
+  if(countriesToSort.length < 10){
+    return this.filteredCountries;
+  }else {
     let attributeToSortBy = attributes[0].attribute;
     let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
 
@@ -68,11 +73,13 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
 
     filteredCountries = this.halfDataSet(countriesSorted);
     attributes.shift();
-    console.log(attributeToSortBy);
-    console.log(filteredCountries);
+    // console.log(attributeToSortBy);
+    // console.log(filteredCountries);
+    this.filteredCountries = filteredCountries;
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
-  return filteredCountries;
+  console.log(filteredCountries);
+  return this.filteredCountries;
 
 }
 
