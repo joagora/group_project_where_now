@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   resultView.bindEvents();
 
   const map = new Map();
-  map.createMap();
+  map.renderMap();
   
 })
