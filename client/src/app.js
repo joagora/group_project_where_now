@@ -7,6 +7,7 @@ const Countries = require('./models/countries');
 const CountriesProperties = require('./models/countries_properties.js');
 const CountriesFilter = require('./models/countries_filter.js');
 const ResultView = require('./views/result_view.js');
+const Geolocator = require('./models/geolocator.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const categoriesElement = document.querySelector('select#occupation-select')
@@ -33,4 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultDiv = document.querySelector('#result');
   const resultView = new ResultView(resultDiv);
   resultView.bindEvents();
+
+  const geolocator = new Geolocator();
+  geolocator.bindEvents();
 })

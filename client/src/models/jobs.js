@@ -9,6 +9,7 @@ const Jobs = function(){
 
 Jobs.prototype.bindEvents = function(){
   this.getData();
+
 }
 
 Jobs.prototype.getData = function(){
