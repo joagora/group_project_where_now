@@ -54,7 +54,8 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
   let filteredCountries = [];
   if(countriesToSort.length < 10){
-    return this.filteredCountries;
+    const countriesToDisplay = this.filteredCountries.slice(0, 5);
+    return countriesToDisplay;
   }else {
 
     let attributeToSortBy = attributes[0].attribute;
@@ -76,7 +77,7 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
 
-  return this.filteredCountries;
+  // return this.filteredCountries;
 
 }
 
