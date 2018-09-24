@@ -73,26 +73,26 @@ describe('CountriesFilter', function () {
     countries2 = [country1, country2, country3, country4, country5, country6, country7, country8, country10, country11, country12, country13];
   });
 
-  it('should be able filter countries by one category', function () {
-  const sortedCountries = countriesFilter.filterCountries(countries, values1);
-  const actual = sortedCountries;
-  assert.deepStrictEqual(actual, [country7, country2, country1]);
-});
-
-  it('should get half of the data', function () {
-    const dataInHalf = countriesFilter.halfDataSet(countries);
-    const actual = dataInHalf.length;
-    assert.deepStrictEqual(actual, 3)
-  })
-
-  it('should remove the attribute that has been used', function () {
-    countriesFilter.filterCountries(countries, values);
-    const actual = values[0];
-    assert.deepStrictEqual(actual, "pollution_index");
-  })
-
-  it('should filter countries by more than one attribute', function() {
-    const actual = countriesFilter.filterCountries(countries2, values);
-    assert.deepStrictEqual(actual, [country10, country8, country7]);
-  })
+//   it('should be able filter countries by one category', function () {
+//   const sortedCountries = countriesFilter.filterCountries(countries, values1);
+//   const actual = sortedCountries;
+//   assert.deepStrictEqual(actual, [country7, country2, country1]);
+// });
+//
+//   it('should get half of the data', function () {
+//     const dataInHalf = countriesFilter.halfDataSet(countries);
+//     const actual = dataInHalf.length;
+//     assert.deepStrictEqual(actual, 3)
+//   })
+//
+//   it('should remove the attribute that has been used', function () {
+//     countriesFilter.filterCountries(countries, values);
+//     const actual = values[0];
+//     assert.deepStrictEqual(actual, "pollution_index");
+//   })
+//
+//   it('should filter countries by more than one attribute', function() {
+//     const actual = countriesFilter.filterCountries(countries2, values);
+//     assert.deepStrictEqual(actual, [country10, country8, country7]);
+//   })
 })

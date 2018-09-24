@@ -13,7 +13,6 @@ CountriesFilter.prototype.bindEvents = function() {
     const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
     // const filteredCountries = this.filter(this.countriesDetails, sortedValues);
-    console.log(filteredByPreferences);
     PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
   })
 

@@ -11,16 +11,23 @@ JobsSelectView.prototype.bindEvents = function(){
     const categories = event.detail;
     this.populateDropdown(categories);
   })
+  this.container.addEventListener('change', (event) => {
+    const selectedJobTitle = event.target.value;
+    PubSub.publish('JobsSelectView:selected-job-title-ready', selectedJobTitle);
+  });
 }
 
 JobsSelectView.prototype.populateDropdown = function (categories){
-  console.log(categories);
   categories.forEach((label) => {
     const option = document.createElement('option');
     option.textContent = label;
     option.value = label;
     this.container.appendChild(option);
   });
+}
+
+JobsSelectView.prototype.getValueFromDropdown = function(event) {
+
 }
 
 module.exports = JobsSelectView;
