@@ -18,13 +18,14 @@ Geolocator.prototype.bindEvents = function() {
 }
 
 Geolocator.prototype.addGeolocation = function(countries) {
+  let promisesArray = [];
   countries.forEach((country) => {
     const countryName = country.name;
-    console.log(countryName);
     const preparedCountryName = this.prepareInput(countryName);
     const url = `http://www.mapquestapi.com/geocoding/v1/address?key=${GEOCODE_API_KEY}&location=${preparedCountryName}`;
     const request = new Request(url);
-    request.get()
+
+    promisesArray.push(request.get()
     .then((data) => {
       const countryCode = data.results[0].locations[0].adminArea1;
       const longitude = data.results[0].locations[0].latLng.lng;
@@ -37,12 +38,14 @@ Geolocator.prototype.addGeolocation = function(countries) {
       country['geocode'] = geocode;
       this.geocodedCountries.push(country);
     })
+
+    .catch(console.error))
+
+  });
+  Promise.all(promisesArray)
     .then((data) => {
       PubSub.publish('Geolocator:geocoded-countries-ready', this.geocodedCountries);
     })
-    .catch(console.error);
-
-  });
 }
 Geolocator.prototype.prepareInput = function(string) {
   const preparedString = string.replace(' ', '+');
