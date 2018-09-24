@@ -5,12 +5,8 @@ const ResultView = function(resultContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-    PubSub.subscribe('Countries:Form-result-calculated', (event) => {
-      const countries = event.detail;
-      console.log(countries);
-
-      this.render(countries);
-    })
+    //wait for info from Salaries
+    //render
 };
 
 ResultView.prototype.render = function(countries) {

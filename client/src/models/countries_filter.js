@@ -53,14 +53,13 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 }
 
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
-
   let filteredCountries = [];
   if(countriesToSort.length < 10){
     return this.filteredCountries;
   }else {
+
     let attributeToSortBy = attributes[0].attribute;
     let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
-
     let countriesSorted = null;
     if(attributeToSortBy === "health_care_index") {
       countriesSorted = validCountries.sort((a, b) => {
@@ -77,7 +76,7 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
     this.filteredCountries = filteredCountries;
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
-  console.log(filteredCountries);
+
   return this.filteredCountries;
 
 }
