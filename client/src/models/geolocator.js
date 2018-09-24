@@ -5,9 +5,6 @@ const Request = require('../helpers/request.js');
 const Geolocator = function() {
   this.data = null;
   this.geocodedCountries = [];
-  this.longitude = null;
-  this.latitude = null;
-  this.countryCode = null;
 }
 
 
@@ -39,9 +36,12 @@ Geolocator.prototype.addGeolocation = function(countries) {
       }
       country['geocode'] = geocode;
       this.geocodedCountries.push(country);
-      console.log(this.geocodedCountries);
     })
-    return this.geocodedCountries;
+    .then((data) => {
+      PubSub.publish('Geolocator:geocoded-countries-ready', this.geocodedCountries);
+    })
+    .catch(console.error);
+
   });
 }
 Geolocator.prototype.prepareInput = function(string) {
