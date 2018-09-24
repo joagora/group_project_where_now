@@ -14,7 +14,6 @@ const Map = function(){
 
 Map.prototype.renderMap = function () {
     // this.mymap.remove()
-   
         
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 15,
@@ -24,10 +23,6 @@ Map.prototype.renderMap = function () {
         id: 'mapbox.streets'
     }).addTo(this.myMap);
         
-        
-    L.marker.on('click', function(e){
-        map.setView(e.latlng, 13);
-
         L.marker([-37.813932, 14.962463]).addTo(this.myMap)
         .bindPopup("<b>Third Choice</b><br />MELBOURNE").openPopup();
 
@@ -36,7 +31,7 @@ Map.prototype.renderMap = function () {
 
         L.marker([55.9533, -3.1883]).addTo(this.myMap)
         .bindPopup("<b>YOU GOT</b><br />EDINBURGH").openPopup();
-    });
+
 };
 
 
