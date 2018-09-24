@@ -16,16 +16,13 @@ CountriesFilter.prototype.bindEvents = function() {
     console.log(filteredByPreferences);
     PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
   })
+
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
     this.countriesDetails = event.detail;
 
   })
 }
-//
-// CountriesFilter.prototype.filter = function(countries, sortedValues) {
-//   const filteredByQualityOfLife = this.filteredByQualityOfLife(countries)
-//   const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
-// }
+
 
 CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
   const sortedValues = valuesToSort.sort( (a, b) => {
@@ -56,9 +53,9 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 }
 
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
-  console.log(countriesToSort);
+
   let filteredCountries = [];
-  if(countriesToSort.length < 6){
+  if(countriesToSort.length < 10){
     return this.filteredCountries;
   }else {
     let attributeToSortBy = attributes[0].attribute;
@@ -77,8 +74,6 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
 
     filteredCountries = this.halfDataSet(countriesSorted);
     attributes.shift();
-    // console.log(attributeToSortBy);
-    // console.log(filteredCountries);
     this.filteredCountries = filteredCountries;
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
