@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const geolocator = new Geolocator();
   geolocator.bindEvents();
 
-  const map = new Map();
-  map.renderMap();
+  const map = new Map(preferencesForm);
+  map.bindEvents();
 })
