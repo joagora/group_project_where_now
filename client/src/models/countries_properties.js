@@ -27,7 +27,7 @@ CountriesProperties.prototype.getData = function(countries) {
       })
 
   })
-  console.log(this.countriesDetailsArray);
+
   PubSub.publish(`CountriesProperties:countries-properties-ready`, this.countriesDetailsArray);
 
 }

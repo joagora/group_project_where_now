@@ -5,13 +5,102 @@ const ResultView = function(resultContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-    console.log("Result view bindEvents Function");
     PubSub.subscribe('Countries:Form-result-calculated', (event) => {
-        console.log(event);
-        const countries = event.detail;
-        console.log("Countries are in Result View here");
-        console.log(countries);
+      const countries = event.detail;
+      console.log(countries);
+      this.render(countries);
     })
 };
 
+ResultView.prototype.render = function(countries) {
+  countries.forEach((country) => {
+    this.createCountryDiv(country);
+  })
+}
+
+ResultView.prototype.createCountryDiv = function(country) {
+  const countryDiv = document.createElement('div');
+  this.resultContainer.appendChild(countryDiv);
+
+  const countryHeader = this.createCountryHeader(country);
+  countryDiv.appendChild(countryHeader);
+
+  const countryGraph = this.createGraph(country);
+  countryDiv.appendChild(countryGraph);
+
+
+
+}
+
+ResultView.prototype.createCountryHeader = function(country) {
+  const countryHeader = document.createElement('h1');
+  countryHeader.textContent = country.name;
+  return countryHeader;
+
+}
+
+ResultView.prototype.createGraph = function(country) {
+  const graphContainer = document.createElement('div');
+  graphContainer.setAttribute('id', 'graph-container');
+  window.chart = new Highcharts.Chart({
+    chart: {
+        renderTo: graphContainer,
+        height: 200,
+        width: 400,
+        type: 'columnrange',
+        inverted: true,
+
+    },
+    exporting: {
+          enabled: false
+    },
+    xAxis: {
+    gridLineColor: 'transparent',
+    lineColor: 'transparent',
+    lineWidth: 0,
+    title: {
+    text: "asdas "
+
+  },
+
+    categories: ['Safety', 'Transportation', 'Healthcare', 'Weather', 'Living', 'Rent']
+  },
+
+  yAxis: {
+    gridLineColor: 'transparent',
+    lineColor: 'transparent',
+    lineWidth: 0,
+    style: {
+    display: 'none'
+  },
+    labels: {
+          enabled: false
+      },
+  },
+
+  credits: {
+              enabled: false
+          },
+
+  legend: {
+    enabled: false
+  },
+
+  series: [{
+    data: [
+      [1, 10.3],
+      [1, 8.5],
+      [1, 11.8],
+      [1, 12.2],
+      [1, 12.2],
+          [1, 12.2]
+    ],
+      colorByPoint: true
+
+  }]
+
+});
+
+  return graphContainer;
+}
 module.exports = ResultView;

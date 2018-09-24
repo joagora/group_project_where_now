@@ -29,3 +29,13 @@
 
 
 }
+
+#graph-container {
+  min-width: 110px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+tspan {
+  display: none;
+}
