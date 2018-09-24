@@ -8,11 +8,25 @@ ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('Countries:Form-result-calculated', (event) => {
       const countries = event.detail;
       console.log(countries);
+
       this.render(countries);
     })
 };
 
 ResultView.prototype.render = function(countries) {
+  this.resultContainer.textContent = "";
+  //
+  // const mapContainer = this.createMapDiv(countries);
+  const detailsContainer = this.createDetailsContainer(countries);
+
+
+}
+
+ResultView.prototype.createDetailsContainer = function(countries) {
+  const detailsContainer = document.createElement('div');
+  detailsContainer.setAttribute('id', 'details-container');
+  this.resultContainer.appendChild(detailsContainer);
+
   countries.forEach((country) => {
     this.createCountryDiv(country);
   })
@@ -24,6 +38,7 @@ ResultView.prototype.createCountryDiv = function(country) {
 
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
+
 
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
@@ -41,7 +56,7 @@ ResultView.prototype.createCountryHeader = function(country) {
 
 ResultView.prototype.createGraph = function(country) {
   const graphContainer = document.createElement('div');
-  graphContainer.setAttribute('id', 'graph-container');
+  graphContainer.setAttribute('class', 'graph-container');
   window.chart = new Highcharts.Chart({
     chart: {
         renderTo: graphContainer,
