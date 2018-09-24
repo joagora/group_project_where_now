@@ -73,8 +73,6 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
 
     filteredCountries = this.halfDataSet(countriesSorted);
     attributes.shift();
-    // console.log(attributeToSortBy);
-    // console.log(filteredCountries);
     this.filteredCountries = filteredCountries;
     return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
