@@ -68,7 +68,7 @@ ResultView.prototype.createGraph = function(country) {
   window.chart = new Highcharts.Chart({
     chart: {
         renderTo: graphContainer,
-        height: 200,
+        height: 150,
         width: 400,
         type: 'columnrange',
         inverted: true,
