@@ -12,11 +12,9 @@ const Map = require('./models/map.js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
   const categoriesElement = document.querySelector('select#occupation-select')
   const jobsSelectView = new JobsSelectView(categoriesElement);
   jobsSelectView.bindEvents();
-
 
   const jobs = new Jobs();
   jobs.bindEvents();
@@ -42,6 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const geolocator = new Geolocator();
   geolocator.bindEvents();
 
-  const map = new Map(preferencesForm);
+  const map = new Map();
   map.bindEvents();
 })

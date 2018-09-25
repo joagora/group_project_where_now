@@ -1,10 +1,3 @@
-// create the map DONE
-// get map to on;y appear after 'submit' DONE
-// get countries from the final result DONE
-// subscribe DONE
-
-// from the results top countries we want to get the latitude, longitude and name for the pins
-
 const Leaflet = require('leaflet')
 const PubSub = require('../helpers/pub_sub');
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -19,21 +12,15 @@ Map.prototype.bindEvents = function () {
   })
 };
 Map.prototype.renderMap = function (countries) {
-  //render whole map
-  let mapGeo = L.mapbox.map('mapid', 'mapbox.streets')
-    .setView([51, 0], 4);
+  let mapGeo = L.mapbox.map('mapid', 'mapbox.streets', { zoomControl: false })
+    .setView([51, 0], 1.7);
     let popUps = L.mapbox.featureLayer().addTo(mapGeo)
 
   let nums = countries.length;
-
   for (let i = 0; i < nums; i++) {
     let lat = countries[i].latlng[0];
     let lon = countries[i].latlng[1];
     let name = countries[i]['name'];
-    console.log(lat, lon);
-    console.log(i)
-    console.log(countries[i].name)
-
 
     let geojson = {
       type: 'Feature',
@@ -44,14 +31,14 @@ Map.prototype.renderMap = function (countries) {
       properties: {
         title: name,
         description: `Your No. ${i+1} choice`,
-        'marker-color': '#3bb2d0',
+        'marker-color': '#DC143C',
         'marker-symbol': (i + 1),
         'marker-size': 'large'
       }
     }
     popUps.setGeoJSON(geojson)
     myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(mapGeo);
-    mapGeo.scrollWheelZoom.disable();
+    // mapGeo.scrollWheelZoom.disable();
   }
 }
 
