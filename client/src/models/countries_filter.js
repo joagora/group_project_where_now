@@ -9,10 +9,11 @@ const CountriesFilter = function() {
 CountriesFilter.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:form-submitted', (event) => {
     const sortedValues = this.sortFormValues(event.detail);
+    console.log(sortedValues);
     this.sortedFormValues = sortedValues;
-    console.log("this.countriesDetails in bind events before sorting", this.countriesDetails);
+    // console.log("this.countriesDetails in bind events before sorting", this.countriesDetails);
     const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
-    console.log("filteredByQualityOfLife", filteredByQualityOfLife);
+    const maxMinValues = this.getMaxMin(filteredByQualityOfLife, sortedValues);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
     console.log("filtered by preferences", filteredByPreferences);
     const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
@@ -20,7 +21,7 @@ CountriesFilter.prototype.bindEvents = function() {
   })
 
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
-    console.log(event.detail);
+    // console.log(event.detail);
     this.countriesDetails = event.detail;
 
   })
@@ -36,9 +37,9 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
 
 
 CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
-  console.log("countries to sort in filter quality", countriesToSort);
+  // console.log("countries to sort in filter quality", countriesToSort);
   let validCountries = this.filterInvalidCountries(countriesToSort, "quality_of_life_index");
-  console.log("valid countries in filter quality", validCountries);
+  // console.log("valid countries in filter quality", validCountries);
   const sortedCountries = validCountries.sort((a, b) => {
     return b.details["quality_of_life_index"] - a.details["quality_of_life_index"];
   })
@@ -46,10 +47,10 @@ CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
 }
 
 CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute) {
-  console.log("countries in filterInvalid", countries);
+  // console.log("countries in filterInvalid", countries);
   let validCountries = [];
   countries.forEach((country) => {
-    console.log("country in the forloop", country);
+    // console.log("country in the forloop", country);
     const detailsKeys = Object.keys(country.details);
 
     if(detailsKeys.includes(attribute) === true) {
@@ -88,6 +89,37 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
 
   // return this.filteredCountries;
 
+}
+
+
+CountriesFilter.prototype.getMaxMin = function(countriesToSort, attributes) {
+
+  const attributesArray = attributes.map(function(attribute) {
+    return attribute.attribute;
+  });
+
+  let maxMinForAttribute = null;
+  let countryAttributes = []
+  attributesArray.forEach((attribute) => {
+    const attributeObject = {};
+    maxMinForAttribute = countriesToSort.map((country) => {
+      // console.log(`attribute for ${attribute}`, maxMinForAttribute);
+      return country.details[attribute];
+    })
+
+    const attributeMaxMinValues = {}
+    const max = Math.max(...maxMinForAttribute);
+    console.log("max", max);
+    const min = Math.min(...maxMinForAttribute);
+    console.log("min", min);
+    attributeMaxMinValues['max'] = max;
+    attributeMaxMinValues['min'] = min;
+
+    attributeObject[attribute] = attributeMaxMinValues;
+    console.log(attributeObject);
+    countryAttributes.push(attributeObject);
+  })
+  return countryAttributes;
 }
 
 CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
