@@ -183,8 +183,9 @@ CountriesFilter.prototype.transformDataIntoPercentages = function(countries, att
       const maxValueForIndex = maxMinValues[currentAttribute].attributeValues.max;
       const minValueForIndex = maxMinValues[currentAttribute].attributeValues.min;
       const spectrum = maxValueForIndex - minValueForIndex;
-      const result = (indexValueForCountry * 100) / spectrum;
-      percentages[currentAttribute] = result;
+      const result = ((indexValueForCountry - minValueForIndex) / spectrum) * 100;
+      const resultRoundedDown = Math.floor(result);
+      percentages[currentAttribute] = resultRoundedDown;
     })
 
 
