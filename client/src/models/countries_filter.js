@@ -8,6 +8,7 @@ const CountriesFilter = function() {
 
 CountriesFilter.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:form-submitted', (event) => {
+
     const sortedValues = this.sortFormValues(event.detail);
     console.log(sortedValues);
     this.sortedFormValues = sortedValues;
@@ -62,35 +63,76 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
   return validCountries;
 }
 
+// CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
+//   let filteredCountries = [];
+//
+//     if(countriesToSort.length < 10){
+//       const countriesToDisplay = this.filteredCountries.slice(0, 5);
+//       return countriesToDisplay;
+//     }else {
+//
+//       let attributeToSortBy = attributes[0].attribute;
+//       let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
+//       let countriesSorted = null;
+//       if(attributeToSortBy === "health_care_index") {
+//         countriesSorted = validCountries.sort((a, b) => {
+//           return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
+//         })
+//       } else {
+//         countriesSorted = validCountries.sort((a, b) => {
+//           return a.details[`${attributeToSortBy}`] - b.details[`${attributeToSortBy}`];
+//         })
+//       }
+//
+//       filteredCountries = this.halfDataSet(countriesSorted);
+//       console.log("SHIFTED");
+//       attributes.shift();
+//       this.filteredCountries = filteredCountries;
+//       return this.filterCountriesByPrefences(filteredCountries, attributes);
+//     }
+//
+//   // return this.filteredCountries;
+//
+// }
+
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
   let filteredCountries = [];
-  if(countriesToSort.length < 10){
-    const countriesToDisplay = this.filteredCountries.slice(0, 5);
-    return countriesToDisplay;
-  }else {
+  let counter = 0;
+  while (counter < attributes.length){
+    if(countriesToSort.length < 10){
+      const countriesToDisplay = this.filteredCountries.slice(0, 5);
+      return countriesToDisplay;
+    }else {
 
-    let attributeToSortBy = attributes[0].attribute;
-    let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
-    let countriesSorted = null;
-    if(attributeToSortBy === "health_care_index") {
-      countriesSorted = validCountries.sort((a, b) => {
-        return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
-      })
-    } else {
-      countriesSorted = validCountries.sort((a, b) => {
-        return a.details[`${attributeToSortBy}`] - b.details[`${attributeToSortBy}`];
-      })
+      let attributeToSortBy = attributes[0].attribute;
+      let validCountries = this.filterInvalidCountries(countriesToSort, attributeToSortBy);
+      let countriesSorted = null;
+      if(attributeToSortBy === "health_care_index") {
+        countriesSorted = validCountries.sort((a, b) => {
+          counter += 1;
+          console.log('counter');
+          return b.details[`${attributeToSortBy}`] - a.details[`${attributeToSortBy}`];
+        })
+      } else {
+        countriesSorted = validCountries.sort((a, b) => {
+          counter += 1;
+          console.log('counter');
+          return a.details[`${attributeToSortBy}`] - b.details[`${attributeToSortBy}`];
+        })
+      }
+
+      filteredCountries = this.halfDataSet(countriesSorted);
+      console.log("SHIFTED");
+      this.filteredCountries = filteredCountries;
+      return this.filterCountriesByPrefences(filteredCountries, attributes);
     }
 
-    filteredCountries = this.halfDataSet(countriesSorted);
-    attributes.shift();
-    this.filteredCountries = filteredCountries;
-    return this.filterCountriesByPrefences(filteredCountries, attributes);
   }
+  }
+
 
   // return this.filteredCountries;
 
-}
 
 
 CountriesFilter.prototype.getMaxMin = function(countriesToSort, attributes) {
