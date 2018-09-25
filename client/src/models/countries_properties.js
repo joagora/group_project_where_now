@@ -9,6 +9,7 @@ const CountriesProperties = function() {
 
 CountriesProperties.prototype.bindEvents = function() {
   PubSub.subscribe('Countries:countries-list-ready', (event) => {
+
     this.getData(event.detail);
   });
 }
@@ -27,7 +28,6 @@ CountriesProperties.prototype.getData = function(countries) {
       })
 
   })
-
   PubSub.publish(`CountriesProperties:countries-properties-ready`, this.countriesDetailsArray);
 
 }

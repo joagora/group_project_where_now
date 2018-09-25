@@ -10,14 +10,17 @@ CountriesFilter.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:form-submitted', (event) => {
     const sortedValues = this.sortFormValues(event.detail);
     this.sortedFormValues = sortedValues;
+    console.log("this.countriesDetails in bind events before sorting", this.countriesDetails);
     const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
+    console.log("filteredByQualityOfLife", filteredByQualityOfLife);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
-
+    console.log("filtered by preferences", filteredByPreferences);
     // const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
-    PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
+    // PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
   })
 
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
+    console.log(event.detail);
     this.countriesDetails = event.detail;
 
   })
@@ -33,7 +36,9 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
 
 
 CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
+  console.log("countries to sort in filter quality", countriesToSort);
   let validCountries = this.filterInvalidCountries(countriesToSort, "quality_of_life_index");
+  console.log("valid countries in filter quality", validCountries);
   const sortedCountries = validCountries.sort((a, b) => {
     return b.details["quality_of_life_index"] - a.details["quality_of_life_index"];
   })
@@ -41,14 +46,17 @@ CountriesFilter.prototype.filteredByQualityOfLife = function(countriesToSort) {
 }
 
 CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute) {
+  console.log("countries in filterInvalid", countries);
   let validCountries = [];
   countries.forEach((country) => {
+    console.log("country in the forloop", country);
     const detailsKeys = Object.keys(country.details);
 
     if(detailsKeys.includes(attribute) === true) {
       validCountries.push(country);
     }
   })
+
   return validCountries;
 }
 

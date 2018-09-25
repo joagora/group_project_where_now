@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const Countries = function () {
   this.countryList = null;
-  this.request = new Request("http://localhost:3000/api/countries");
+  this.request = new Request("https://restcountries.eu/rest/v2/all");
 };
 
 
@@ -14,6 +14,7 @@ Countries.prototype.bindEvents = function () {
 Countries.prototype.getData = function() {
   this.request.get()
     .then((countryList) => {
+      console.log(countryList);
       PubSub.publish('Countries:countries-list-ready', countryList);
     })
     .catch(console.error);

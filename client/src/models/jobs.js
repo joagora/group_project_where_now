@@ -10,7 +10,7 @@ const Jobs = function(){
 
 Jobs.prototype.bindEvents = function(){
   this.getData();
-  PubSub.subscribe('Geolocator:geocoded-countries-ready', (event) => {
+  PubSub.subscribe('Countries:Form-result-calculated', (event) => {
     const countriesDetails = event.detail;
     this.countriesArray = countriesDetails;
     this.getSalaryDetails(countriesDetails);

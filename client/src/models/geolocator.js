@@ -27,9 +27,11 @@ Geolocator.prototype.addGeolocation = function(countries) {
 
     promisesArray.push(request.get()
     .then((data) => {
-      const countryCode = data.results[0].locations[0].adminArea1;
-      const longitude = data.results[0].locations[0].latLng.lng;
-      const latitude = data.results[0].locations[0].latLng.lat;
+      const validLocation = this.validateLocation(data.results[0].locations);
+      console.log(validLocation);
+      const countryCode = validLocation.adminArea1;
+      const longitude = validLocation.latLng.lng;
+      const latitude = validLocation.latLng.lat;
       geocode = {
         countryCode: countryCode,
         longitude: longitude,
@@ -44,12 +46,24 @@ Geolocator.prototype.addGeolocation = function(countries) {
   });
   Promise.all(promisesArray)
     .then((data) => {
+      console.log(this.geocodedCountries);
       PubSub.publish('Geolocator:geocoded-countries-ready', this.geocodedCountries);
     })
 }
 Geolocator.prototype.prepareInput = function(string) {
   const preparedString = string.replace(' ', '+');
   return preparedString;
+}
+
+Geolocator.prototype.validateLocation = function(locations) {
+  let validLocation = null;
+  locations.forEach((location) => {
+    if(location.geocodeQuality === "COUNTRY") {
+      validLocation = location;
+    }
+  
+  })
+  return validLocation;
 }
 
 
