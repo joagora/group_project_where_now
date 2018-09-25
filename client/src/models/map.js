@@ -14,7 +14,7 @@ const Map = function(){
 };
 
 Map.prototype.bindEvents = function() {
-  PubSub.subscribe('Geolocator:geocoded-countries-ready', (event) => {
+  PubSub.subscribe('CountriesFilter:Form-result-calculated', (event) => {
     this.renderMap(event.detail);
   })
 
@@ -51,8 +51,8 @@ Map.prototype.createLocationPins = function(countries) {
 
   let nums = countries.length
   for (var i=0; i<nums;i++  ){
-  let lat = countries[i].geocode['latitude'];
-  let lon = countries[i].geocode['longitude'];
+  let lat = countries[i].latlng[0];
+  let lon = countries[i].latlng[1];
   let name = countries[i]['name'];
   console.log(lat,lon)
 

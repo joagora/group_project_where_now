@@ -10,7 +10,7 @@ const Jobs = function(){
 
 Jobs.prototype.bindEvents = function(){
   this.getData();
-  PubSub.subscribe('Countries:Form-result-calculated', (event) => {
+  PubSub.subscribe('CountriesFilter:Form-result-calculated', (event) => {
     const countriesDetails = event.detail;
     this.countriesArray = countriesDetails;
     this.getSalaryDetails(countriesDetails);
@@ -42,7 +42,7 @@ Jobs.prototype.getSalaryDetails = function(countries) {
   let promisesArray = [];
   countries.forEach((country) => {
     let countriesWithSalaries = [];
-    const countryCode = country.geocode.countryCode;
+    const countryCode = country.alpha2Code;
     const url = `https://api.teleport.org/api/countries/iso_alpha2:${countryCode}/salaries/`;
     const request = new Request(url);
     promisesArray.push(request.get()

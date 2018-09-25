@@ -14,7 +14,6 @@ Countries.prototype.bindEvents = function () {
 Countries.prototype.getData = function() {
   this.request.get()
     .then((countryList) => {
-      console.log(countryList);
       PubSub.publish('Countries:countries-list-ready', countryList);
     })
     .catch(console.error);

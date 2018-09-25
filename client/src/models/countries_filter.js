@@ -15,8 +15,8 @@ CountriesFilter.prototype.bindEvents = function() {
     console.log("filteredByQualityOfLife", filteredByQualityOfLife);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
     console.log("filtered by preferences", filteredByPreferences);
-    // const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
-    // PubSub.publish('Countries:Form-result-calculated', filteredByPreferences);
+    const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
+    PubSub.publish('CountriesFilter:Form-result-calculated', filteredByPreferences);
   })
 
   PubSub.subscribe('CountriesProperties:countries-properties-ready', (event) => {
