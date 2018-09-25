@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
   height: 150px;
   width: 150px;
-  
+
 
 
 }
@@ -44,51 +44,36 @@ tspan {
 
 /* MAP AND RESULT BOX CSS */
 
-.wrapper { 
-  display: grid; 
-  width: auto;
-  height: 60%;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: repeat(3,1fr); 
- 
-} 
-
-.result1 { 
-  grid-column-start: 1; 
-  grid-column-end: 4; 
-  grid-row-start: 1; 
-  grid-row-end: 4;
-  /* z-index: 1000; */
-}
-
-.result2 { 
-  grid-column-start: 1; 
-  grid-column-end: 1; 
-  grid-row-start: 2; 
-  grid-row-end: 2; 
-}
-
-.result3 { 
-  grid-column-start: 1; 
-  grid-column-end: 1; 
-  grid-row-start: 3; 
-  grid-row-end: 3; 
-}
-
-#mapid { 
-  grid-column-start: 2; 
-  grid-column-end: 4; 
-  grid-row-start: 1; 
-  grid-row-end: 4; 
-
-  
-}
 .wrapper {
+  display: grid;
+  width: auto;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3,1fr);
   border: 2px solid blue;
   border-radius: 5px;
   background-color: #ee7f7f;
   border: grey;
+  height: 80vh;
 }
+
+#result {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  /* z-index: 1000; */
+}
+
+#mapid {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+
+}
+
 
 .wrapper > div {
   border: 2px solid #747272;
@@ -103,7 +88,7 @@ tspan {
 
 .box {
   width: 40%;
-  
+
   margin: 0 auto;
   background: rgba(255,255,255,0.2);
   padding: 35px;
@@ -114,7 +99,7 @@ tspan {
 }
 
 .button {
-  vertical-align: 0%; 
+  vertical-align: 0%;
   font-size: 1em;
   padding: 10px;
   color: rgb(66, 65, 65);

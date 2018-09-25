@@ -2,12 +2,14 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const ResultView = function(resultContainer) {
     this.resultContainer = resultContainer;
+    this.marginValuesOfIndexed = null;
 };
 
 ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('Jobs:countries-with-salary-ready', (event) => {
       this.render(event.detail);
     })
+
 };
 
 ResultView.prototype.render = function(countries) {
@@ -54,10 +56,19 @@ ResultView.prototype.createCountryHeader = function(country) {
 ResultView.prototype.createGraph = function(country) {
   const graphContainer = document.createElement('div');
   graphContainer.setAttribute('class', 'graph-container');
+  console.log(country.percentageValues);
+  const crime = country.percentageValues.crime_index;
+  const transport = country.percentageValues.traffic_inefficiency_index;
+  const healthcare = country.percentageValues.health_care_index;
+  const pollution = country.percentageValues.pollution_index;
+  const weather = country.percentageValues.climate_index;
+  const restaurant = country.percentageValues.restaurant_price_index
+  const rent = country.percentageValues.rent_index;
+
   window.chart = new Highcharts.Chart({
     chart: {
         renderTo: graphContainer,
-        height: 200,
+        height: 150,
         width: 400,
         type: 'columnrange',
         inverted: true,
@@ -75,7 +86,7 @@ ResultView.prototype.createGraph = function(country) {
 
   },
 
-    categories: ['Safety', 'Transportation', 'Healthcare', 'Weather', 'Living', 'Rent']
+    categories: ['Crime', 'Transportation', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent']
   },
 
   yAxis: {
@@ -100,12 +111,13 @@ ResultView.prototype.createGraph = function(country) {
 
   series: [{
     data: [
-      [1, 10.3],
-      [1, 8.5],
-      [1, 11.8],
-      [1, 12.2],
-      [1, 12.2],
-          [1, 12.2]
+      [-1, crime],
+      [-1, transport],
+      [-1, healthcare],
+      [-1, pollution],
+      [-1, weather],
+      [-1, restaurant],
+      [-1, rent]
     ],
       colorByPoint: true
 
