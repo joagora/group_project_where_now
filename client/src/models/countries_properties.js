@@ -23,11 +23,14 @@ CountriesProperties.prototype.getData = function(countries) {
       .then((data) => {
         country['details'] = data;
         this.countriesDetailsArray.push(country);
-
+        return this.countriesDetailsArray;
+      })
+      .then((data) => {
+        PubSub.publish(`CountriesProperties:countries-properties-ready`, this.countriesDetailsArray);
       })
 
   })
-  PubSub.publish(`CountriesProperties:countries-properties-ready`, this.countriesDetailsArray);
+
 
 }
 

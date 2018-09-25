@@ -10,12 +10,14 @@ FormView.prototype.bindEvents = function() {
     const formValues = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', formValues);
   })
+
+
 }
 
 FormView.prototype.getSubmittedValues = function(form) {
   const preferenceSliders = this.grabSliders(form);
 
-  const sliderValues = this.getSlidersValues(preferenceSliders)
+  const sliderValues = this.getSlidersValues(preferenceSliders);
   return sliderValues;
 }
 

@@ -4,15 +4,22 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 #preference-container {
   margin: auto;
   width: 60%;
   height: 10%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  display: flex;
+  height: 500px;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.preference-input-container label {
+  margin-top: 10px;
 }
 
 .preference-slider {
@@ -26,7 +33,7 @@
   background-repeat: no-repeat;
   height: 150px;
   width: 150px;
-
+  margin: 10px auto;
 
 
 }
@@ -63,6 +70,7 @@ tspan {
   grid-row-start: 1;
   grid-row-end: 4;
   /* z-index: 1000; */
+  overflow: scroll;
 }
 
 #mapid {
@@ -175,27 +183,41 @@ tspan {
 input[type="range"] {
   display: block;
   -webkit-appearance: none;
-  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  background-image: -webkit-linear-gradient(left, #c38d9e, #ae93bf, #7ca1d3, #3cadc9, #41b3a3);
+  background-image: -o-linear-gradient(left, #c38d9e, #ae93bf, #7ca1d3, #3cadc9, #41b3a3);
+  background-image: linear-gradient(to right, #c38d9e, #ae93bf, #7ca1d3, #3cadc9, #41b3a3);
   width: 300px;
-  height: 5px;
-  border-radius: 5px;
-  margin: 0 auto;
+  height: 14px;
+  border-radius: 2px;
+  margin: 20px auto;
   outline: 0;
+
 }
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background-color: #e74c3c;
-  width: 30px;
-  height: 30px;
+  background-color:#3cadc9;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  border: 2px solid white;
   cursor: pointer;
   transition: .3s ease-in-out;
+  -webkit-box-shadow: 10px 10px 22px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 22px -8px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 22px -8px rgba(0,0,0,0.75);
  }​
  input[type="range"]::-webkit-slider-thumb:hover {
     background-color: white;
-    border: 2px solid #e74c3c;
+    border: 2px solid green;
   }
   input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.6);
   }
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

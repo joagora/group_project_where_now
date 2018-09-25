@@ -14,7 +14,9 @@ ResultView.prototype.bindEvents = function () {
 
 ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
-  //
+  this.resultContainer.classList.toggle('visible');
+  const formView = document.querySelector('#content-container');
+  formView.classList.toggle('hidden');
   // const mapContainer = this.createMapDiv(countries);
   const detailsContainer = this.createDetailsContainer(countries);
 
