@@ -152,6 +152,8 @@ tspan {
   width: 30%;
   position: relative;
   transition: all 5s ease-in-out;
+  height: 80%;
+  width: 90%
 }
 
 .popup h2 {
