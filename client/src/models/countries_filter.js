@@ -11,12 +11,13 @@ CountriesFilter.prototype.bindEvents = function() {
     const sortedValues = this.sortFormValues(event.detail);
     console.log(sortedValues);
     this.sortedFormValues = sortedValues;
-    // console.log("this.countriesDetails in bind events before sorting", this.countriesDetails);
     const filteredByQualityOfLife = this.filteredByQualityOfLife(this.countriesDetails);
     const maxMinValues = this.getMaxMin(filteredByQualityOfLife, sortedValues);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, sortedValues);
-    console.log("filtered by preferences", filteredByPreferences);
-    const transformedValues = this.transformValuesToPercentages(filteredByPreferences);
+    const transformedValues = this.transformDataIntoPercentages(filteredByPreferences, sortedValues, maxMinValues);
+    console.log(transformedValues);
+    //transform data
+
     PubSub.publish('CountriesFilter:Form-result-calculated', filteredByPreferences);
   })
 
@@ -99,7 +100,7 @@ CountriesFilter.prototype.getMaxMin = function(countriesToSort, attributes) {
   });
 
   let maxMinForAttribute = null;
-  let countryAttributes = []
+  let countryAttributes = {}
   attributesArray.forEach((attribute) => {
     const attributeObject = {};
     maxMinForAttribute = countriesToSort.map((country) => {
@@ -115,11 +116,42 @@ CountriesFilter.prototype.getMaxMin = function(countriesToSort, attributes) {
     attributeMaxMinValues['max'] = max;
     attributeMaxMinValues['min'] = min;
 
-    attributeObject[attribute] = attributeMaxMinValues;
+    attributeObject['attributeName'] = attribute;
+    attributeObject['attributeValues'] = attributeMaxMinValues;
     console.log(attributeObject);
-    countryAttributes.push(attributeObject);
+    countryAttributes[attribute] = attributeObject;
   })
   return countryAttributes;
+}
+
+CountriesFilter.prototype.transformDataIntoPercentages = function(countries, attributes, maxMinValues) {
+  console.log("maxMinValues", maxMinValues);
+
+  countries.forEach((country) => {
+    const attributesArray = attributes.map(function(attribute) {
+      return attribute.attribute;
+    });
+    console.log(attributesArray);
+    let percentages = {};
+    // attributesArray.forEach((attributeName) => {
+    attributesArray.forEach((attribute) => {
+      const currentAttribute = attribute;
+      console.log(currentAttribute);
+      const indexValueForCountry = country.details[currentAttribute];
+      const maxValueForIndex = maxMinValues[currentAttribute].attributeValues.max;
+      const minValueForIndex = maxMinValues[currentAttribute].attributeValues.min;
+      const spectrum = maxValueForIndex - minValueForIndex;
+      const result = (indexValueForCountry * 100) / spectrum;
+      percentages[currentAttribute] = result;
+    })
+
+
+
+    country['percentageValues'] = percentages;
+
+  })
+  console.log(countries);
+  return countries;
 }
 
 CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
@@ -128,11 +160,6 @@ CountriesFilter.prototype.halfDataSet = function(dataToHalf) {
   return newDataSet;
 }
 
-CountriesFilter.prototype.transformValuesToPercentages = function(countries) {
-  countries.forEach((country) => {
-    const details = country.details;
-    //finish transforming data
-  })
-}
+
 
 module.exports = CountriesFilter;
