@@ -14,9 +14,11 @@ ResultView.prototype.bindEvents = function () {
 
 ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
-  this.resultContainer.classList.toggle('visible');
+  const resultWrapper = document.querySelector('#wrapper');
+  wrapper.classList.toggle('visible');
   const formView = document.querySelector('#content-container');
   formView.classList.toggle('hidden');
+  formView.classList.remove('visible');
   // const mapContainer = this.createMapDiv(countries);
   const detailsContainer = this.createDetailsContainer(countries);
 
@@ -35,16 +37,20 @@ ResultView.prototype.createDetailsContainer = function(countries) {
 
 ResultView.prototype.createCountryDiv = function(country) {
   const countryDiv = document.createElement('div');
+  countryDiv.setAttribute('class', 'country-details');
   this.resultContainer.appendChild(countryDiv);
 
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
 
-
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
 
-
+  const moreButton = this.createButton();
+  countryDiv.appendChild(moreButton);
+  moreButton.addEventListener('click', (event) => {
+    PubSub.publish('ResultView:selected-country', country);
+  })
 
 }
 
@@ -128,5 +134,13 @@ ResultView.prototype.createGraph = function(country) {
 });
 
   return graphContainer;
+}
+
+ResultView.prototype.createButton = function() {
+  const button = document.createElement('a');
+  button.setAttribute('class', 'more-button');
+  button.setAttribute('href', '#popup')
+  button.textContent = "View more details";
+  return button;
 }
 module.exports = ResultView;
