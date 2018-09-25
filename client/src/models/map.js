@@ -9,7 +9,12 @@ const Leaflet = require('leaflet')
 const PubSub = require('../helpers/pub_sub');
 
 const Map = function(){
-  this.myMap = L.map('mapid').setView([55.95, -3.1883], 1);
+  this.myMap = L.map('mapid').setView([55.95, -3.1883], 1, {
+    pan: {
+      animate:true,
+      duration: 1.5
+    }
+  });
   this.geoCountries = null;
 };
 
@@ -39,26 +44,16 @@ Map.prototype.createLocationPins = function(countries) {
   console.log('Pin Function')
   console.log(countries);
 
-  //
-  //
-  // countries.forEach(function(country){
-  //   console.log(country.name)
-  //   console.log(country.details)
-  //   console.log(country.geocode)
-  // })
-
-
-
   let nums = countries.length
-  for (var i=0; i<nums;i++  ){
+
+  for (let i=0; i<nums;i++  ){
   let lat = countries[i].geocode['latitude'];
   let lon = countries[i].geocode['longitude'];
   let name = countries[i]['name'];
-  console.log(lat,lon)
 
   L.marker([lat , lon]).addTo(this.myMap)
   .bindPopup(`<b>No.${i+1} Choice</b><br/>${name}`).openPopup();
-
+ 
   // lat = countries[1].geocode['latitude'];
   //  lon = countries[1].geocode['longitude'];
   // console.log(lat,lon)

@@ -12,9 +12,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
   crossorigin=""/>
-  <!-- <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-  crossorigin=""></script> -->
 
   <link rel="stylesheet" href="./css/main.css">
   <title>Where now?</title>
@@ -38,7 +35,6 @@
           <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
           <label for="safety-button">Safety</label>
 
-
           <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
           <label for="environment-button">Environmental factors</label>
 
@@ -51,15 +47,21 @@
           <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
           <label for="healthcare-button">Healthcare</label>
 
-
-
         </div>
         <input type="submit" id="submit-form" value="Explore">
       </form>
     </div>
-    <div id="result"></div>
-    <div id="mapid">MAP</div>
+
+
+    <div class="wrapper">
+        <div class="result1">Result One</div>
+        <div class="result2">Result Two</div>
+        <div class="result3">Result Three</div>
+        <div id="mapid">Map</div>
+      </div>
     
+  
+  </div> 
   </main>
 
 </body>
