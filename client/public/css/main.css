@@ -79,6 +79,8 @@ tspan {
   grid-column-end: 4; 
   grid-row-start: 1; 
   grid-row-end: 4; 
+
+  
 }
 .wrapper {
   border: 2px solid blue;
