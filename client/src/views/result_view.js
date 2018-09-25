@@ -5,8 +5,9 @@ const ResultView = function(resultContainer) {
 };
 
 ResultView.prototype.bindEvents = function () {
-    //wait for info from Salaries
-    //render
+    PubSub.subscribe('Jobs:countries-with-salary-ready', (event) => {
+      this.render(event.detail);
+    })
 };
 
 ResultView.prototype.render = function(countries) {
