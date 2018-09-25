@@ -3,7 +3,7 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const Countries = function () {
   this.countryList = null;
-  this.request = new Request("http://localhost:3000/api/countries");
+  this.request = new Request("https://restcountries.eu/rest/v2/all");
 };
 
 
