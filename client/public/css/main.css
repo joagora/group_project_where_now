@@ -160,19 +160,24 @@ tspan {
 }
 
 .button {
-  vertical-align: 0%;
-  font-size: 1em;
-  padding: 10px;
-  color: rgb(66, 65, 65);
-  border: 2px solid rgb(57, 61, 59);
-  border-radius: 20px/50px;
+  width: 160px;
+  height: 30px;
+  font-size: 0.9em;
+  color: white;
+  padding: 20px 32px 32px 32px;
   text-decoration: none;
+  margin: auto;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  border: none;
+  -webkit-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.75);
+  border-radius: 5px;
+  -webkit-appearance: none;
+  border-radius: 5px;
+  background-color: rgb(86, 114, 191);
 }
-.button:hover {
-  background: #06D85F;
-}
+
 
 .more-button {
   float: right;
