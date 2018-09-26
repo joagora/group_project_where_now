@@ -258,7 +258,8 @@ a {
 .popup {
   position: absolute;
   top: 20px;
-  right: 30px;
+  right: 0;
+  left: 0;
   transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
