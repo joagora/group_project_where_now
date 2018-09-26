@@ -42,11 +42,11 @@ CountryDetailsView.prototype.render = function(country) {
 
   const information = document.createElement('h2')
   information.setAttribute('class', 'information');
-  information.innerHTML = `Your new life in <span class="font-country"> ${countryName, region} </span>awaits you so maybe it’s time
-  to finally learn ${countryLanguage} and convert some ${currencyName} before you mix with the locals
+  information.innerHTML = `Your new life in ${countryName, region} awaits you so maybe it’s time
+  to finally learn ${countryLanguage} and to convert some ${currencyName} before you mix with the locals
   who outnumber you ${population} to 1!
-  It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
-  USD per month in your new adopted home!`
+  It’ll be totally worth it though, as an experienced <span class="font-underline">${jobTitle}</span>, the average wage is <span class="font-underline">${salaryShortened}</span>
+  USD per month in your new adopted home!</span>`
   // this.container.appendChild(information);
 
   const countryFlag = document.createElement('img');
@@ -81,7 +81,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
     chart: {
       renderTo: graphContainer,
       height: 300,
-      width: 1000,
+      width: 1400,
       type: 'columnrange',
       inverted: true,
     },
@@ -95,7 +95,13 @@ CountryDetailsView.prototype.renderGraph = function(country) {
       title: {
         text: "asdas "
       },
-      categories: ['Crime', 'Transportation', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent']
+      categories: ['Crime', 'Transportation', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent'],
+      labels: {
+        style: {
+          color: '#A9A9A9',
+          fontSize: '20px'
+        }
+      },
     },
     yAxis: {
       gridLineColor: 'transparent',
@@ -115,6 +121,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
       enabled: false
     },
     series: [{
+      colors: ['#E27D60', '#60c5e2', '#E8A87C', '#C38D9E', '#41B3A3', '#E27D60', '#60c5e2', '#E8A87C', '#C38D9E'],
       data: [
         [-1, crime],
         [-1, transport],

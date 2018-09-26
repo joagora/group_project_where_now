@@ -74,7 +74,7 @@ ResultView.prototype.createGraph = function(country) {
   window.chart = new Highcharts.Chart({
     chart: {
         renderTo: graphContainer,
-        height: 150,
+        height: 250,
         width: 400,
         type: 'columnrange',
         inverted: true,
@@ -88,11 +88,16 @@ ResultView.prototype.createGraph = function(country) {
     lineColor: 'transparent',
     lineWidth: 0,
     title: {
-    text: "asdas "
-
+    text: "asdas",
   },
 
-    categories: ['Crime', 'Transportation', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent']
+    categories: ['Crime', 'Transport', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent'],
+    labels: {
+      style: {
+        color: '#A9A9A9',
+        fontSize: '20px'
+      }
+    }
   },
 
   yAxis: {
@@ -116,6 +121,7 @@ ResultView.prototype.createGraph = function(country) {
   },
 
   series: [{
+    colors: ['#E27D60', '#60c5e2', '#E8A87C', '#C38D9E', '#41B3A3', '#E27D60', '#60c5e2', '#E8A87C', '#C38D9E'],
     data: [
       [-1, crime],
       [-1, transport],
