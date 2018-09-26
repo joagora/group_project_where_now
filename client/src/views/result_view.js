@@ -141,6 +141,7 @@ ResultView.prototype.createButton = function() {
   button.setAttribute('class', 'more-button');
   button.setAttribute('href', '#popup')
   button.textContent = "View more details";
+
   return button;
 }
 module.exports = ResultView;

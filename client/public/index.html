@@ -38,22 +38,22 @@
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="restaurant_price_index" class="preference-slider">
-              <label for="cpi_and_rent_index">Dining out costs</label>
+              <label for="restaurant_price_index">Dining out costs</label>
             </div>
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="climate_index" class="preference-slider">
-              <label for="cpi_and_rent_index">Weather</label>
+              <label for="climate_index">Weather</label>
             </div>
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
-              <label for="safety-button">Safety</label>
+              <label for="crime_index">Safety</label>
             </div>
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
-              <label for="environment-button">Environmental factors</label>
+              <label for="pollution_index">Environmental factors</label>
             </div>
 
             <div class="preference-input-container">
@@ -63,12 +63,12 @@
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="traffic_inefficiency_index" class="preference-slider">
-              <label for="transportation-button">Convenient transportation</label>
+              <label for="traffic_inefficiency_index">Convenient transportation</label>
             </div>
 
             <div class="preference-input-container">
               <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
-              <label for="healthcare-button">Healthcare</label>
+              <label for="health_care_index">Healthcare</label>
             </div>
           </div>
           <input type="submit" id="submit-form" value="Explore">
@@ -96,10 +96,11 @@
 
   <div id="popup" class="overlay">
   	<div class="popup">
-  		<h2 class="country-header"></h2>
+  		<h1 class="country-header"></h1>
+      <h2 class="city-header"></h2>
   		<a class="close" href="#">&times;</a>
-  		<div class="content">
-
+  		<div class="city-details">
+        <div class="widget"></div>
   		</div>
   	</div>
   </div>

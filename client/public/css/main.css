@@ -50,6 +50,7 @@ tspan {
 
 .main-container {
   height: 100vh;
+  overflow: hidden;
 }
 
 
@@ -85,7 +86,7 @@ tspan {
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 4;
-
+  z-index: 0;
 
 }
 
@@ -153,7 +154,8 @@ tspan {
   position: relative;
   transition: all 5s ease-in-out;
   height: 80%;
-  width: 90%
+  width: 90%;
+  z-index: 10;
 }
 
 .popup h2 {

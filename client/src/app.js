@@ -9,7 +9,8 @@ const CountriesFilter = require('./models/countries_filter.js');
 const ResultView = require('./views/result_view.js');
 const Geolocator = require('./models/geolocator.js');
 const Map = require('./models/map.js');
-
+const Cities = require('./models/cities.js');
+const CountryDetailsView = require('./views/country_details_view.js');
 document.addEventListener('DOMContentLoaded', () => {
 
   const categoriesElement = document.querySelector('select#occupation-select')
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formView = new FormView(preferencesForm);
   formView.bindEvents();
 
-  
+
   const countries = new Countries();
   countries.bindEvents();
 
@@ -42,4 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const map = new Map();
   map.bindEvents();
+
+  const cities = new Cities();
+  cities.bindEvents();
+
+  const countryViewContainer = document.querySelector('.popup')
+  const countryDetailsView = new CountryDetailsView(countryViewContainer);
+  countryDetailsView.bindEvents();
 })
