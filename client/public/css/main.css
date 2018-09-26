@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Playfair Display', serif;
 }
 
 #content-container {
@@ -284,6 +285,7 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 20;
   color: white;
   font-size: 79px;
+  font-family: 'Lato', sans-serif;
 }
 
 .not-visible {
@@ -292,4 +294,24 @@ input[type="range"]::-webkit-slider-thumb {
 
 .move-display {
   transform: translateY(-40%);
+}
+
+.description {
+  font-style: italic;
+}
+
+h2.subtitle{
+  padding-top: 20px;
+}
+
+h2.find-job{
+  font-size:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+h2.choose-preferences{
+  font-size:20px;
+  padding-top:40px;
+  padding-bottom:10px;
 }
