@@ -50,11 +50,11 @@ CountryDetailsView.prototype.render = function(country) {
   countryTimezones.textContent = timezonesText;
   this.container.appendChild(countryTimezones)
 
-  const countrySalary = document.createElement('h2');
-  countrySalary.setAttribute('class', 'country-salary');
-  const salaryText = `The Average Salary for a ${_____________}: ${country.salary}`;
-  countrySalary.textContent = salaryText;
-  this.container.appendChild(countrySalary);
+  // const countrySalary = document.createElement('h2');
+  // countrySalary.setAttribute('class', 'country-salary');
+  // const salaryText = `The Average Salary for a : ${country.salary.salary_percentiles['percentile_50']}`;
+  // countrySalary.textContent = salaryText;
+  // this.container.appendChild(countrySalary);
 
   const countryCapital = document.createElement('h2');
   countryCapital.setAttribute('class', 'country-capital');
