@@ -11,8 +11,9 @@ const Geolocator = require('./models/geolocator.js');
 const Map = require('./models/map.js');
 const Cities = require('./models/cities.js');
 const CountryDetailsView = require('./views/country_details_view.js');
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
+  
   const categoriesElement = document.querySelector('select#occupation-select')
   const jobsSelectView = new JobsSelectView(categoriesElement);
   jobsSelectView.bindEvents();

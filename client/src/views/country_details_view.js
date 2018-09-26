@@ -41,8 +41,8 @@ CountryDetailsView.prototype.render = function(country) {
 
   const information = document.createElement('h2')
   information.setAttribute('class', 'information');
-  information.textContent = `Your new life in ${countryName, region} awaits you so maybe it’s time 
-  to finally learn ${countryLanguage} and convert some ${currencyName} before you mix with the locals 
+  information.textContent = `Your new life in ${countryName, region} awaits you so maybe it’s time
+  to finally learn ${countryLanguage} and convert some ${currencyName} before you mix with the locals
   who outnumber you ${population} to 1!
   It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
   USD per month in your new adopted home!`
@@ -56,52 +56,6 @@ CountryDetailsView.prototype.render = function(country) {
 
 }
 
-
-//Your new life in ${country, continent} awaits you so maybe it’s time to finally learn ${language} 
-//and convert some ${currency} before you mix with the locals who outnumber you ${population} to 1 :D
-//It’ll be totally worth it though, as an experienced ${job_title} the average wage is ${salary} per month in your new adopted home!
-
-  // const countryLanguages = document.createElement('h1')
-  // countryLanguages.setAttribute('class', 'country-languages');
-  // countryLanguages.textContent = `You better start learning ${country.languages[0]['name']}!`;
-  // this.container.appendChild(countryLanguages);
-
-  // const countryPopulation = document.createElement('h2');
-  // countryPopulation.setAttribute('class', 'country-population');
-  // const populationText = `Population : ${country.population}`;
-  // countryPopulation.textContent = populationText;
-  // this.container.appendChild(countryPopulation);
-
-  // const countryTimezones = document.createElement('h2');
-  // countryTimezones.setAttribute('class', 'country-timezone');
-  // const timezonesText = `Timezone: ${country.timezones}`;
-  // countryTimezones.textContent = timezonesText;
-  // this.container.appendChild(countryTimezones);
-
-  // const countryCurrencies = document.createElement('h2');
-  // countryCurrencies.setAttribute('class', 'country-currencies');
-  // const currenciesText = `Currency: ${country.currencies[0]['symbol']}, ${country.currencies[0]['name']}`;
-  // countryCurrencies.textContent = currenciesText;
-  // this.container.appendChild(countryCurrencies);
-
-  // const countryRegion = document.createElement('h2');
-  // countryRegion.setAttribute('class', 'country-region');
-  // const regionText = `Region: ${country.region}`;
-  // countryRegion.textContent = regionText;
-  // this.container.appendChild(countryRegion);
-
-  // const countryCapital = document.createElement('h2');
-  // countryCapital.setAttribute('class', 'country-capital');
-  // const capitalText = `Capital City : ${country.capital}`
-  // countryCapital.textContent = capitalText;
-  // this.container.appendChild(countryCapital);
-
-  // const countrySalary = document.createElement('h2');
-  // countrySalary.setAttribute('class', 'country-salary');
-  // const salaryShortened = Math.floor(country.salary.salary_percentiles['percentile_50'])
-  // const salaryText = `The Average Salary for a ${country.salary.job['title']}: $ ${salaryShortened} USD`;
-  // countrySalary.textContent = salaryText;
-  // this.container.appendChild(countrySalary);
 
 
 
@@ -121,7 +75,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
     chart: {
       renderTo: graphContainer,
       height: 500,
-      width: 1500,
+      width: 1000,
       type: 'columnrange',
       inverted: true,
     },
@@ -170,5 +124,12 @@ CountryDetailsView.prototype.renderGraph = function(country) {
   this.container.appendChild(graphContainer);
   return graphContainer;
 }
+
+// =======
+//   const capitalCityHeader = document.querySelector('.city-header');
+//   capitalCityHeader.textContent = country.capital;
+// }
+
+
 
 module.exports = CountryDetailsView;

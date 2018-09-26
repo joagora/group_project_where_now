@@ -7,6 +7,7 @@ const ResultView = function(resultContainer) {
 
 ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('Jobs:countries-with-salary-ready', (event) => {
+      console.log("countries with salary", event.detail);
       this.render(event.detail);
     })
 
@@ -16,19 +17,16 @@ ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
   const resultWrapper = document.querySelector('#wrapper');
   wrapper.classList.toggle('visible');
-  const formView = document.querySelector('#content-container');
+  const formView = document.querySelector('#instructions');
   formView.classList.toggle('hidden');
   formView.classList.remove('visible');
-  // const mapContainer = this.createMapDiv(countries);
   const detailsContainer = this.createDetailsContainer(countries);
 
 
 }
 
 ResultView.prototype.createDetailsContainer = function(countries) {
-  const detailsContainer = document.createElement('div');
-  detailsContainer.setAttribute('id', 'details-container');
-  this.resultContainer.appendChild(detailsContainer);
+
 
   countries.forEach((country) => {
     this.createCountryDiv(country);
@@ -42,6 +40,8 @@ ResultView.prototype.createCountryDiv = function(country) {
 
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
+
+
 
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
@@ -137,10 +137,17 @@ ResultView.prototype.createGraph = function(country) {
 }
 
 ResultView.prototype.createButton = function() {
+
   const button = document.createElement('a');
   button.setAttribute('class', 'more-button');
   button.setAttribute('href', '#popup')
-  button.textContent = "View more details";
+  const icon = document.createElement('i');
+
+  icon.setAttribute('class', 'fas fa-arrow-circle-right');
+  const paragraph = document.createElement('p');
+  icon.appendChild(paragraph);
+  paragraph.textContent = "View more details";
+  button.appendChild(icon);
 
   return button;
 }
