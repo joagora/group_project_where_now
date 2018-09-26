@@ -17,7 +17,7 @@ ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
   const resultWrapper = document.querySelector('#wrapper');
   wrapper.classList.toggle('visible');
-  const formView = document.querySelector('#content-container');
+  const formView = document.querySelector('#instructions');
   formView.classList.toggle('hidden');
   formView.classList.remove('visible');
   const detailsContainer = this.createDetailsContainer(countries);

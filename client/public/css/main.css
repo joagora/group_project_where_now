@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Playfair Display', serif;
 }
 
 #content-container {
@@ -292,4 +293,10 @@ input[type="range"]::-webkit-slider-thumb {
 
 .move-display {
   transform: translateY(-40%);
+}
+
+#icon-container {
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
 }
