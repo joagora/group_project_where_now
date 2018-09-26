@@ -39,6 +39,7 @@ CountryDetailsView.prototype.render = function(country) {
   this.container.appendChild(countryHeader);
 
 
+
   const information = document.createElement('h2')
   information.setAttribute('class', 'information');
   information.textContent = `Your new life in ${countryName, region} awaits you so maybe it’s time
@@ -46,14 +47,19 @@ CountryDetailsView.prototype.render = function(country) {
   who outnumber you ${population} to 1!
   It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
   USD per month in your new adopted home!`
-  this.container.appendChild(information);
+  // this.container.appendChild(information);
 
   const countryFlag = document.createElement('img');
   countryFlag.setAttribute('class','country-flag');
   countryFlag.src = country.flag;
   console.log(country.flag);
-  this.container.appendChild(countryFlag);
+  // this.container.appendChild(countryFlag);
 
+  const countryFlagInfoDetails = document.createElement('div');
+  countryFlagInfoDetails.setAttribute('class', 'flex-country-info');
+  this.container.appendChild(countryFlagInfoDetails);
+  countryFlagInfoDetails.appendChild(information);
+  countryFlagInfoDetails.appendChild(countryFlag);
 }
 
 
@@ -74,7 +80,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
   window.chart = new Highcharts.Chart({
     chart: {
       renderTo: graphContainer,
-      height: 500,
+      height: 300,
       width: 1000,
       type: 'columnrange',
       inverted: true,
