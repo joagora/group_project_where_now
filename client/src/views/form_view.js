@@ -20,6 +20,11 @@ FormView.prototype.bindEvents = function() {
 FormView.prototype.hideForm = function() {
   const form = document.querySelector('#preferences-form');
   form.classList.toggle('hidden');
+  form.classList.remove('visible');
+
+  const formContainer = document.querySelector('#form-container');
+  formContainer.classList.toggle('hidden');
+  formContainer.classList.remove('visible');
 }
 
 FormView.prototype.listenForFormIconClick = function() {
@@ -29,6 +34,10 @@ FormView.prototype.listenForFormIconClick = function() {
 
     const form = document.querySelector('#form-container');
     form.classList.remove('hidden');
+    const instructionsParagraph = document.querySelector('#instructions');
+    instructionsParagraph.classList.toggle('hidden');
+    instructionsParagraph.classList.remove('visible');
+
     this.slideInForm();
     this.moveDisplayUp();
   })
