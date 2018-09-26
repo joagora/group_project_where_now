@@ -348,6 +348,12 @@ input[type="range"]::-webkit-slider-thumb {
   color: white;
   font-size: 79px;
   font-family: 'Lato', sans-serif;
+  box-shadow: 0px 0px 19px 0px rgba(29, 29, 29, 1);
+  text-shadow: 2px 2px black;
+}
+
+#instructions{
+  text-shadow: 2px 2px black;
 }
 
 .not-visible {

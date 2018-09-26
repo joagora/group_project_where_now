@@ -10,22 +10,16 @@ ResultView.prototype.bindEvents = function () {
       console.log("countries with salary", event.detail);
       this.render(event.detail);
     })
-
 };
 
 ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
   const resultWrapper = document.querySelector('#wrapper');
   wrapper.classList.toggle('visible');
-
   const detailsContainer = this.createDetailsContainer(countries);
-
-
 }
 
 ResultView.prototype.createDetailsContainer = function(countries) {
-
-
   countries.forEach((country) => {
     this.createCountryDiv(country);
   })
@@ -39,8 +33,6 @@ ResultView.prototype.createCountryDiv = function(country) {
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
 
-
-
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
 
@@ -49,14 +41,12 @@ ResultView.prototype.createCountryDiv = function(country) {
   moreButton.addEventListener('click', (event) => {
     PubSub.publish('ResultView:selected-country', country);
   })
-
 }
 
 ResultView.prototype.createCountryHeader = function(country) {
   const countryHeader = document.createElement('h1');
   countryHeader.textContent = country.name;
   return countryHeader;
-
 }
 
 ResultView.prototype.createGraph = function(country) {
