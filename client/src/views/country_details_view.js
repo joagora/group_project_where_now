@@ -43,9 +43,9 @@ CountryDetailsView.prototype.render = function(country) {
   information.setAttribute('class', 'information');
   information.textContent = `Your new life in ${countryName, region} awaits you so maybe it’s time 
   to finally learn ${countryLanguage} and convert some ${currencyName} before you mix with the locals 
-  who outnumber you ${population} to 1 :D
+  who outnumber you ${population} to 1!
   It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
-  USD per month in your new adopted home!`
+  USD per annum in your new adopted home!`
   this.container.appendChild(information);
 
   const countryFlag = document.createElement('img');
