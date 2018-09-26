@@ -1,26 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js');
 const Request = require('../helpers/request.js');
 
-<<<<<<< HEAD
 const CountryDetailsView = function(container) {
   this.container = container;
 };
 
 CountryDetailsView.prototype.bindEvents = function() {
   PubSub.subscribe('ResultView:selected-country', (event) => {
-=======
-const CountryDetailsView = function(countryContainer) {
-  this.countryContainer = countryContainer;
-};
-
-CountryDetailsView.prototype.bindEvents = function() {
-  PubSub.subscribe('CountriesFilter:Form-result-calculated', (event) => {
->>>>>>> feature/map
     this.render(event.detail);
   })
 };
 
-<<<<<<< HEAD
 CountryDetailsView.prototype.render = function(country) {
   const countryHeader = document.querySelector('.country-header');
   countryHeader.textContent = country.name;
@@ -68,16 +58,4 @@ CountryDetailsView.prototype.render = function(country) {
 //
 //
 // }
-=======
-CountryDetailsView.prototype.render = function() {
-  this.countryContainer.textContent = '';
-  const detailsContainer = this.createDetailsContainer(country);
-}
-
-CountryDetailsView.prototype.createDetailsContainer = function(country) {
-  const deatilsContainer = document.createElement('div');
-  detailsContainer.setAttribute('id')
-}
-
->>>>>>> feature/map
 module.exports = CountryDetailsView;
