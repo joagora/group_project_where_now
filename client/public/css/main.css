@@ -35,6 +35,7 @@
   margin: 20 auto;
   background-color: white;
   border-radius: 30px;
+  opacity: 0.97;
   transform: translateY(-20%)
 }
 
@@ -291,7 +292,7 @@ input[type="range"] {
   width: 60%;
   height: 14px;
   border-radius: 2px;
-  margin: 20px auto;
+  margin: 10px auto 20px auto;
   outline: 0;
 
 }
@@ -349,6 +350,7 @@ input[type="range"]::-webkit-slider-thumb {
   color: white;
   font-size: 79px;
   font-family: 'Lato', sans-serif;
+  letter-spacing: 18px;
 }
 
 .not-visible {
@@ -420,4 +422,11 @@ h2.choose-preferences{
 #icon-container .fas {
   margin-top: 5px;
   font-size: 80px;
+}
+
+.max-min-range {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
 }
