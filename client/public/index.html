@@ -25,10 +25,11 @@
 <body>
   <main class="main-container">
     <div id="display-container">
-      <div id="logo"></div>
+
 
       <div id="content-container">
         <h1 id="name">Where now?</h1>
+        <p id="instructions">Tell us what your occupation is and what is important when looking for a place to live and we will find a perfect country for you!</p>
         <div id="form-container">
           <form id= "preferences-form">
             <select name="occupation" id="occupation-select" required>
@@ -38,40 +39,44 @@
             <div id="preference-container">
 
               <div class="preference-input-container">
-                <label for="crime_index">Safety</label>
+
+                <label for="crime_index">Safety (low crime rate)</label>
                 <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
               </div>
 
               <div class="preference-input-container">
-                <label for="health_care_index">Healthcare</label>
+                <label for="health_care_index">Good healthcare (modern equipment and skill and competency of medical staff)</label>
+
                 <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
 
               </div>
 
               <div class="preference-input-container">
-                <label for="pollution_index">Environmental factors</label>
+                <label for="pollution_index">Environmental issues (good air quality)</label>
                 <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
               </div>
 
               <div class="preference-input-container">
-                <label for="climate_index">Weather</label>
+                <label for="climate_index">Good weather (i.e low humidity and likeable temperatures, low percipitation)</label>
                 <input type="range" min="0" max="10" id="climate_index" class="preference-slider">
               </div>
 
               <div class="preference-input-container">
-                <label for="low-rent-button">Low rent</label>
+
+
+                <label for="low-rent-button">Low rent (i.e estimation of rent prices compared to NYC)</label>
                 <input type="range" min="0" max="10" id="rent_index" class="preference-slider">
               </div>
 
               <div class="preference-input-container">
-                <label for="traffic_inefficiency_index">Convenient transportation</label>
+                <label for="traffic_inefficiency_index">Convenient transportation (fast commuting and low congestion)</label>
                 <input type="range" min="0" max="10" id="traffic_inefficiency_index" class="preference-slider">
               </div>
 
 
 
               <div class="preference-input-container">
-                <label for="restaurant_price_index">Dining out costs</label>
+                <label for="restaurant_price_index">Affordable dining out</label>
                 <input type="range" min="0" max="10" id="restaurant_price_index" class="preference-slider">
 
               </div>
