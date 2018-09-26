@@ -24,30 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const formView = new FormView(preferencesForm);
   formView.bindEvents();
 
-
-  const countries = new Countries();
-  countries.bindEvents();
-
-  const countriesProperties = new CountriesProperties();
-  countriesProperties.bindEvents();
-
-  const countriesFilter = new CountriesFilter();
-  countriesFilter.bindEvents();
-
-  const resultDiv = document.querySelector('#result');
-  const resultView = new ResultView(resultDiv);
-  resultView.bindEvents();
-
-  const geolocator = new Geolocator();
-  geolocator.bindEvents();
-
-  const map = new Map();
-  map.bindEvents();
-
-  const cities = new Cities();
-  cities.bindEvents();
-
-  const countryViewContainer = document.querySelector('.popup')
-  const countryDetailsView = new CountryDetailsView(countryViewContainer);
-  countryDetailsView.bindEvents();
+  // 
+  // const countries = new Countries();
+  // countries.bindEvents();
+  //
+  // const countriesProperties = new CountriesProperties();
+  // countriesProperties.bindEvents();
+  //
+  // const countriesFilter = new CountriesFilter();
+  // countriesFilter.bindEvents();
+  //
+  // const resultDiv = document.querySelector('#result');
+  // const resultView = new ResultView(resultDiv);
+  // resultView.bindEvents();
+  //
+  // const geolocator = new Geolocator();
+  // geolocator.bindEvents();
+  //
+  // const map = new Map();
+  // map.bindEvents();
+  //
+  // const cities = new Cities();
+  // cities.bindEvents();
+  //
+  // const countryViewContainer = document.querySelector('.popup')
+  // const countryDetailsView = new CountryDetailsView(countryViewContainer);
+  // countryDetailsView.bindEvents();
 })

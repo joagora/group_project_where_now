@@ -24,86 +24,85 @@
 </head>
 <body>
   <main class="main-container">
-    <div id="logo"></div>
+    <div id="display-container">
+      <div id="logo"></div>
 
-    <div id="content-container">
-      <h1 id="name">Where now?</h1>
-      <div id="form-container">
-        <form id= "preferences-form">
-          <select name="occupation" id="occupation-select" required>
+      <div id="content-container">
+        <h1 id="name">Where now?</h1>
+        <div id="form-container">
+          <form id= "preferences-form">
+            <select name="occupation" id="occupation-select" required>
+              <option value="" selected="selected" disabled></option>
+            </select>
 
-          </select>
+            <div id="preference-container">
 
-          <div id="preference-container">
+              <div class="preference-input-container">
+                <label for="crime_index">Safety</label>
+                <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
+              </div>
 
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="restaurant_price_index" class="preference-slider">
-              <label for="restaurant_price_index">Dining out costs</label>
+              <div class="preference-input-container">
+                <label for="health_care_index">Healthcare</label>
+                <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
+
+              </div>
+
+              <div class="preference-input-container">
+                <label for="pollution_index">Environmental factors</label>
+                <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
+              </div>
+
+              <div class="preference-input-container">
+                <label for="climate_index">Weather</label>
+                <input type="range" min="0" max="10" id="climate_index" class="preference-slider">
+              </div>
+
+              <div class="preference-input-container">
+                <label for="low-rent-button">Low rent</label>
+                <input type="range" min="0" max="10" id="rent_index" class="preference-slider">
+              </div>
+
+              <div class="preference-input-container">
+                <label for="traffic_inefficiency_index">Convenient transportation</label>
+                <input type="range" min="0" max="10" id="traffic_inefficiency_index" class="preference-slider">
+              </div>
+
+
+
+              <div class="preference-input-container">
+                <label for="restaurant_price_index">Dining out costs</label>
+                <input type="range" min="0" max="10" id="restaurant_price_index" class="preference-slider">
+
+              </div>
             </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="climate_index" class="preference-slider">
-              <label for="climate_index">Weather</label>
-            </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
-              <label for="crime_index">Safety</label>
-            </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
-              <label for="pollution_index">Environmental factors</label>
-            </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="rent_index" class="preference-slider">
-              <label for="low-rent-button">Low rent</label>
-            </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="traffic_inefficiency_index" class="preference-slider">
-              <label for="traffic_inefficiency_index">Convenient transportation</label>
-            </div>
-
-            <div class="preference-input-container">
-              <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
-              <label for="health_care_index">Healthcare</label>
-            </div>
-          </div>
-          <input type="submit" id="submit-form" value="Explore">
-        </form>
+            <input type="submit" id="submit-form" value="Explore" id="submit-button">
+          </form>
+        </div>
       </div>
     </div>
-    </main>
-<main>
+  </main>
+  <main>
 
 
 
     <div id="wrapper" class="hidden">
 
-      <div id="result">Result One
+      <div id="result"></div>
 
-      </div>
-        <!--<div class="result2">Result Two
-            <a class="button" href="#popup1">Let me Pop up</a>
+      <div id="mapid"></div>
+    </div>
+
+    <div id="popup" class="overlay">
+      <div class="popup">
+        <h1 class="country-header"></h1>
+        <h2 class="city-header"></h2>
+        <a class="close" href="#">&times;</a>
+        <div class="city-details">
+          <div class="widget"></div>
         </div>
-        <div class="result3">Result Three
-            <a class="button" href="#popup">Let me Pop up</a>
-        </div> -->
-        <div id="mapid">Map</div>
       </div>
-
-  <div id="popup" class="overlay">
-  	<div class="popup">
-  		<h1 class="country-header"></h1>
-      <h2 class="city-header"></h2>
-  		<a class="close" href="#">&times;</a>
-  		<div class="city-details">
-        <div class="widget"></div>
-  		</div>
-  	</div>
-  </div>
+    </div>
 
 
   </main>

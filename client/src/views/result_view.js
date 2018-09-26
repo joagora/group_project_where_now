@@ -7,6 +7,7 @@ const ResultView = function(resultContainer) {
 
 ResultView.prototype.bindEvents = function () {
     PubSub.subscribe('Jobs:countries-with-salary-ready', (event) => {
+      console.log("countries with salary", event.detail);
       this.render(event.detail);
     })
 
@@ -19,7 +20,6 @@ ResultView.prototype.render = function(countries) {
   const formView = document.querySelector('#content-container');
   formView.classList.toggle('hidden');
   formView.classList.remove('visible');
-  // const mapContainer = this.createMapDiv(countries);
   const detailsContainer = this.createDetailsContainer(countries);
 
 
@@ -42,6 +42,8 @@ ResultView.prototype.createCountryDiv = function(country) {
 
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
+
+
 
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
