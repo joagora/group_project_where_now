@@ -44,6 +44,10 @@
   margin: 0 auto;
 }
 
+.graph-big {
+
+}
+
 tspan {
   display: none;
 }
@@ -158,9 +162,15 @@ tspan {
   z-index: 10;
 }
 
+.popup h1 {
+  margin-top: 0;
+  color: #C38D9E;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
 .popup h2 {
   margin-top: 0;
-  color: #333;
+  color: #E8A87C;
   font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {
@@ -233,4 +243,12 @@ input[type="range"]::-webkit-slider-thumb {
 
 .occupation-select {
 
+}
+
+.country-flag {
+  float: right;
+  position: absolute;
+  top: 50px;
+  right: 5%;
+  width: 40%;
 }
