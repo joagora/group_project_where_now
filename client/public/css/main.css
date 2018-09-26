@@ -156,11 +156,11 @@ tspan {
 }
 
 .button {
-  width: 160px;
-  height: 30px;
-  font-size: 0.9em;
+  width: 60%;
+  height: 40px;
+  font-size: 23px;
   color: white;
-  padding: 20px 32px 40px 32px;
+  padding: 20px 32px 52px 32px;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -170,11 +170,21 @@ tspan {
   border-radius: 5px;
   -webkit-appearance: none;
   border-radius: 5px;
-  background-color: rgb(86, 114, 191);
+  background-color: #3cadc9;
   margin: 0 auto 30px auto;
 }
 
-
+select {
+  margin: auto;
+  height: 30px;
+  margin-bottom: 5%;
+  font-size: 20px;
+  display: block;
+  width: 60%;
+  border-bottom: 1px solid white;
+  outline: none;
+  text-align: left;
+}
 .more-button {
   float: right;
 }
@@ -370,4 +380,8 @@ h2.choose-preferences{
   font-weight:100;
   line-height: 23px;
 
+}
+
+.fas {
+  font-size: 23px;
 }
