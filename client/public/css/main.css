@@ -71,12 +71,16 @@
   min-width: 110px;
   height: 200px;
   margin: 0 auto;
+  margin-top: 20px;
   font-family: 'Playfair Display', serif;
+
 }
 
 .graph-big {
   width: 100%;
   height: 50%;
+  margin-left: 55px;
+  margin-top: 7px;
 }
 
 tspan {
@@ -141,10 +145,9 @@ tspan {
   color: #000000;
 }
 
-<<<<<<< HEAD
 =======
 
->>>>>>> develop
+
 .box {
   width: 40%;
 
@@ -209,33 +212,31 @@ tspan {
   width: 90%;
   min-width: 1000px;
   z-index: 10;
-  overflow: scroll;
 }
 
 .popup h1 {
   margin-top: 0;
-  color: rgb(218, 8, 74);
-  font-family: Tahoma, Arial, sans-serif;
-  text-align: center;
+  color: #C5C6C7;
+  font-family: 'Lato', sans-serif;
+  text-align: left;
+  text-transform: uppercase;
   /* position: absolute;
   top: 4%; */
   width:60%;
-  font-size: 60;
+  font-size: 40px;
+  padding-bottom: 20px;
 
 }
 
 .popup h2 {
   margin-top: 0;
-  color: #E8A87C;
-  font-family: Tahoma, Arial, sans-serif;
   width: 40%;
-  text-align: center;
+  text-align: left;
   size:25;
   width: 50%;
-  font-size: 1.5em;
-
-
+  font-size: 1.2em;
 }
+
 .popup .close {
   position: absolute;
   top: 20px;
@@ -371,7 +372,27 @@ h2.choose-preferences{
 
 .information {
   font-family: 'Playfair Display', serif;
-  font-size: 17px;
+  font-size: 15px;
   font-weight:100;
   line-height: 23px;
+  color: black;
+}
+
+.font-underline{
+  text-decoration: underline;
+}
+
+
+.language-font{
+  font-style: italic;
+}
+
+
+.country-header{
+  padding-bottom: 10px;
+  margin-left: 60px;
+}
+
+.flex-country-info{
+  margin-left: 60px;
 }
