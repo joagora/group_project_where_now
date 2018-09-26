@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const formView = new FormView(preferencesForm);
   formView.bindEvents();
 
-
   const countries = new Countries();
   countries.bindEvents();
 
