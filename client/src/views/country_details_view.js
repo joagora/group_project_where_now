@@ -45,7 +45,7 @@ CountryDetailsView.prototype.render = function(country) {
   to finally learn ${countryLanguage} and convert some ${currencyName} before you mix with the locals 
   who outnumber you ${population} to 1!
   It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
-  USD per annum in your new adopted home!`
+  USD per month in your new adopted home!`
   this.container.appendChild(information);
 
   const countryFlag = document.createElement('img');
