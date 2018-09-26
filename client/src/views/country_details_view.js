@@ -28,6 +28,9 @@ CountryDetailsView.prototype.render = function(country) {
   countryHeader.textContent = country.name;
   this.container.appendChild(countryHeader);
 
+
+
+
   const countryLanguages = document.createElement('h1')
   countryLanguages.setAttribute('class', 'country-languages');
   countryLanguages.textContent = `You better start learning ${country.languages[0]['name']}!`;
