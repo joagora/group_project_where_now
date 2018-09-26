@@ -15,7 +15,6 @@
 
 }
 
-
 #preference-container {
   margin: auto;
   height: 10%;
@@ -72,6 +71,7 @@
   min-width: 110px;
   height: 200px;
   margin: 0 auto;
+  font-family: 'Playfair Display', serif;
 }
 
 .graph-big {
@@ -133,7 +133,6 @@ tspan {
 
 }
 
-
 #wrapper > div {
   border: 2px solid #747272;
   border-radius: 5px;
@@ -142,7 +141,10 @@ tspan {
   color: #000000;
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> develop
 .box {
   width: 40%;
 
@@ -178,7 +180,6 @@ tspan {
 .more-button {
   float: right;
 }
-
 
 .overlay {
   position: fixed;
@@ -364,10 +365,13 @@ h2.choose-preferences{
   cursor: pointer;
 }
 
+.graph-container {
+  font-family: 'Playfair Display', serif;
+}
+
 .information {
   font-family: 'Playfair Display', serif;
   font-size: 17px;
   font-weight:100;
   line-height: 23px;
-
 }
