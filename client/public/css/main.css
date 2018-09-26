@@ -296,6 +296,7 @@ input[type="range"]::-webkit-slider-thumb {
   transform: translateY(-40%);
 }
 
+
 .description {
   font-style: italic;
 }
@@ -314,4 +315,11 @@ h2.choose-preferences{
   font-size:20px;
   padding-top:40px;
   padding-bottom:10px;
+}
+
+#icon-container {
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+
 }

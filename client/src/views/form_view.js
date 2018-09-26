@@ -9,7 +9,7 @@ FormView.prototype.bindEvents = function() {
     event.preventDefault();
     const formValues = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', formValues);
-
+    this.hideForm()
   })
 
   this.listenForFormIconClick();
@@ -17,18 +17,32 @@ FormView.prototype.bindEvents = function() {
 
 }
 
+FormView.prototype.hideForm = function() {
+  const form = document.querySelector('#preferences-form');
+  form.classList.toggle('hidden');
+  form.classList.remove('visible');
+
+  const formContainer = document.querySelector('#form-container');
+  formContainer.classList.toggle('hidden');
+  formContainer.classList.remove('visible');
+}
+
 FormView.prototype.listenForFormIconClick = function() {
   const iconContainer = document.querySelector('#icon-container');
   iconContainer.addEventListener('click', (event) => {
     iconContainer.classList.toggle('hidden');
-    const instructionsParagraph = document.querySelector('#instructions');
-    instructionsParagraph.classList.toggle('hidden');
+
     const form = document.querySelector('#form-container');
     form.classList.remove('hidden');
+    const instructionsParagraph = document.querySelector('#instructions');
+    instructionsParagraph.classList.toggle('hidden');
+    instructionsParagraph.classList.remove('visible');
+
     this.slideInForm();
     this.moveDisplayUp();
   })
 }
+
 
 FormView.prototype.slideInForm = function() {
   const formParent = document.querySelector('#preferences-form');
