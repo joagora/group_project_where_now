@@ -25,6 +25,7 @@ CountryDetailsView.prototype.render = function(country) {
   const countryName = country.name;
   const region = country.region;
 
+
   const closeButtonContainer = document.createElement('a')
   const closeButtonIcon = document.createElement('i');
   closeButtonIcon.setAttribute('class', 'fas fa-times')
@@ -46,7 +47,6 @@ CountryDetailsView.prototype.render = function(country) {
   It’ll be totally worth it though, as an experienced ${jobTitle}, the average wage is ${salaryShortened}
   USD per month in your new adopted home!`
   this.container.appendChild(information);
-console.log(information)
 
   const countryFlag = document.createElement('img');
   countryFlag.setAttribute('class','country-flag');
