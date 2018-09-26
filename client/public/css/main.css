@@ -9,7 +9,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-      height: 80vh;
+  height: 80vh;
   /* overflow: hidden; */
 
 }
@@ -35,6 +35,7 @@
   margin: 20 auto;
   background-color: white;
   border-radius: 30px;
+  transform: translateY(-20%)
 }
 
 .preference-input-container label {
@@ -47,9 +48,24 @@
 }
 
 #display-container {
-  transform: translateY(10%);
+  position: relative;
+  top: 40%;
+  transition: transform 1s ease-in-out;
 }
 
+#display-container-top {
+  transform: translateY(45%);
+  transition: 1s linear ;
+}
+
+#instructions {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  margin: 3% auto;
+}
 
 #graph-container {
   min-width: 110px;
@@ -66,6 +82,8 @@ tspan {
   background-image: url('../assets/background2.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: 1% 50%;
   overflow: scroll;
 }
 
@@ -74,6 +92,7 @@ tspan {
 
 
 #wrapper {
+  height: 65vh;
   display: grid;
   width: auto;
   position: absolute;
@@ -85,7 +104,6 @@ tspan {
   border: 2px solid blue;
   border-radius: 5px;
   border: grey;
-  height: 80vh;
 }
 
 #result {
@@ -95,6 +113,9 @@ tspan {
   grid-row-end: 4;
   /* z-index: 1000; */
   overflow: scroll;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 #mapid {
@@ -144,6 +165,11 @@ tspan {
 .button:hover {
   background: #06D85F;
 }
+
+.more-button {
+  float: right;
+}
+
 
 .overlay {
   position: fixed;
@@ -258,4 +284,12 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 20;
   color: white;
   font-size: 79px;
+}
+
+.not-visible {
+  display: none;
+}
+
+.move-display {
+  transform: translateY(-40%);
 }

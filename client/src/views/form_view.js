@@ -9,11 +9,36 @@ FormView.prototype.bindEvents = function() {
     event.preventDefault();
     const formValues = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', formValues);
+
   })
+
+  this.listenForFormIconClick();
 
 
 }
 
+FormView.prototype.listenForFormIconClick = function() {
+  const iconContainer = document.querySelector('#icon-container');
+  iconContainer.addEventListener('click', (event) => {
+    iconContainer.classList.toggle('hidden');
+    const instructionsParagraph = document.querySelector('#instructions');
+    instructionsParagraph.classList.toggle('hidden');
+    const form = document.querySelector('#form-container');
+    form.classList.remove('hidden');
+    this.slideInForm();
+    this.moveDisplayUp();
+  })
+}
+
+FormView.prototype.slideInForm = function() {
+  const formParent = document.querySelector('#preferences-form');
+  formParent.classList.toggle('visible');
+}
+
+FormView.prototype.moveDisplayUp = function() {
+  const displayContainer = document.querySelector('#display-container');
+  displayContainer.classList.toggle('move-display');
+}
 FormView.prototype.getSubmittedValues = function(form) {
   const preferenceSliders = this.grabSliders(form);
 

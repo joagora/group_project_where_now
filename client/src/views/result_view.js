@@ -26,9 +26,7 @@ ResultView.prototype.render = function(countries) {
 }
 
 ResultView.prototype.createDetailsContainer = function(countries) {
-  const detailsContainer = document.createElement('div');
-  detailsContainer.setAttribute('id', 'details-container');
-  this.resultContainer.appendChild(detailsContainer);
+
 
   countries.forEach((country) => {
     this.createCountryDiv(country);
@@ -139,10 +137,17 @@ ResultView.prototype.createGraph = function(country) {
 }
 
 ResultView.prototype.createButton = function() {
+
   const button = document.createElement('a');
   button.setAttribute('class', 'more-button');
   button.setAttribute('href', '#popup')
-  button.textContent = "View more details";
+  const icon = document.createElement('i');
+
+  icon.setAttribute('class', 'fas fa-arrow-circle-right');
+  const paragraph = document.createElement('p');
+  icon.appendChild(paragraph);
+  paragraph.textContent = "View more details";
+  button.appendChild(icon);
 
   return button;
 }
