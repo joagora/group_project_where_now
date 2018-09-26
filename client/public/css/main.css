@@ -173,6 +173,8 @@ tspan {
   position: absolute;
   top: 2%;
   width:60%;
+  font-size: 60;
+  
 }
 
 .popup h2 {
