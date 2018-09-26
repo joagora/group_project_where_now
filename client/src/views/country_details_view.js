@@ -99,7 +99,9 @@ CountryDetailsView.prototype.renderGraph = function(country) {
       labels: {
         style: {
           color: '#A9A9A9',
-          fontSize: '20px'}
+          fontSize: '20px'
+        }
+      },
     },
     yAxis: {
       gridLineColor: 'transparent',
@@ -132,7 +134,6 @@ CountryDetailsView.prototype.renderGraph = function(country) {
       colorByPoint: true
     }]
   });
-
   this.container.appendChild(graphContainer);
   return graphContainer;
 }
