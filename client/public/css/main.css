@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 #preference-container {
@@ -50,7 +51,6 @@ tspan {
 
 .main-container {
   height: 100vh;
-  overflow: hidden;
 }
 
 
