@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 #preference-container {
@@ -50,7 +51,6 @@ tspan {
 
 .main-container {
   height: 100vh;
-  overflow: hidden;
 }
 
 
@@ -233,4 +233,44 @@ input[type="range"]::-webkit-slider-thumb {
 
 .occupation-select {
 
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  background: #eeeeee;
+  border-radius: 50%;
+  position: relative;
+  margin: 50px;
+  display: inline-block;
+}
+
+.spinner:after, .spinner:before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.spinner-1:after {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border: 4px solid transparent;
+  border-top-color: orangered;
+  border-bottom-color: orangered;
+  animation: spinny 2s linear infinite;
+}
+
+@keyframes spinny {
+  0%  {
+    transform: rotate(0deg) scale(1);
+      }
+  50%  {
+    transform: rotate(180deg) scale(1.2);
+      }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
