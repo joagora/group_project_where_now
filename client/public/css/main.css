@@ -77,10 +77,6 @@
 .graph-big {
   width: 100%;
   height: 50%;
-  position: absolute;
-  bottom: 9%;
-  left: 15%%;
-
 }
 
 tspan {
@@ -164,9 +160,8 @@ tspan {
   height: 30px;
   font-size: 0.9em;
   color: white;
-  padding: 20px 32px 32px 32px;
+  padding: 20px 32px 40px 32px;
   text-decoration: none;
-  margin: auto;
   cursor: pointer;
   border: none;
   -webkit-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.75);
@@ -176,6 +171,7 @@ tspan {
   -webkit-appearance: none;
   border-radius: 5px;
   background-color: rgb(86, 114, 191);
+  margin: 0 auto 30px auto;
 }
 
 
@@ -212,6 +208,7 @@ tspan {
   width: 90%;
   min-width: 1000px;
   z-index: 10;
+  overflow: scroll;
 }
 
 .popup h1 {
@@ -329,6 +326,7 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 20;
   color: white;
   font-size: 79px;
+  font-family: 'Lato', sans-serif;
 }
 
 .not-visible {
@@ -339,18 +337,37 @@ input[type="range"]::-webkit-slider-thumb {
   transform: translateY(-40%);
 }
 
+
+.description {
+  font-style: italic;
+}
+
+h2.subtitle{
+  padding-top: 20px;
+}
+
+h2.find-job{
+  font-size:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+h2.choose-preferences{
+  font-size:20px;
+  padding-top:40px;
+  padding-bottom:10px;
+}
+
 #icon-container {
   color: white;
   font-size: 25px;
   cursor: pointer;
-
-}
-
-.flex-country-info {
-  display: flex;
-  justify-content: space-between;
 }
 
 .information {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight:100;
+  line-height: 23px;
 
 }

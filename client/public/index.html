@@ -1,5 +1,7 @@
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -35,7 +37,7 @@
 
 
       <div id="content-container">
-        <h1 id="name">Where now?</h1>
+        <h1 id="name">WHERE NOW?</h1>
         <p id="instructions">Tell us what your occupation is and what is important when looking for a place to live and we will find a perfect country for you!</p>
         <div id="icon-container">
           <p class="icon-description">Fill in the form now!</p>
@@ -46,56 +48,53 @@
 
         <div id="form-container" class="hidden">
           <form id= "preferences-form">
+            <h2 class="find-job"> Find your occupation:</h2>
             <select name="occupation" id="occupation-select" required>
               <option value="" selected="selected" disabled></option>
             </select>
 
-            <div id="preference-container">
-
-              <div class="preference-input-container">
-
-                <label for="crime_index">Safety (low crime rate)</label>
+                <h2 class="choose-preferences"> Choose your preferences:</h2>
+                <label for="crime_index"><h2 class="subtitle">Safety</h2>
+                  <div class="description">(low crime rate)</div>
+                </label>
                 <input type="range" min="0" max="10" id="crime_index" class="preference-slider">
-              </div>
 
-              <div class="preference-input-container">
-                <label for="health_care_index">Good healthcare (modern equipment and skill and competency of medical staff)</label>
+
+                <label for="health_care_index"><h2 class="subtitle">Good healthcare</h2>
+                  <div class="description">(modern equipment & skill and competency of medical staff)</div></label>
 
                 <input type="range" min="0" max="10" id="health_care_index" class="preference-slider">
 
-              </div>
 
-              <div class="preference-input-container">
-                <label for="pollution_index">Environmental issues (good air quality)</label>
+                <label for="pollution_index"><h2 class="subtitle">Environmental issues</h2>
+                  <div class="description">(i.e. good air quality)</div>
+                </label>
                 <input type="range" min="0" max="10" id="pollution_index" class="preference-slider">
-              </div>
 
-              <div class="preference-input-container">
-                <label for="climate_index">Good weather (i.e low humidity and likeable temperatures, low percipitation)</label>
+
+                <label for="climate_index"><h2 class="subtitle">Good weather</h2>
+                  <div class="description">(i.e low humidity and likeable temperatures, low percipitation)</div>
+                </label>
                 <input type="range" min="0" max="10" id="climate_index" class="preference-slider">
-              </div>
-
-              <div class="preference-input-container">
 
 
-                <label for="low-rent-button">Low rent (i.e estimation of rent prices compared to NYC)</label>
+                <label for="low-rent-button"><h2 class="subtitle">Low rent</h2>
+                  <div class="description">(i.e estimation of rent prices compared to NYC)</div>
+                </label>
                 <input type="range" min="0" max="10" id="rent_index" class="preference-slider">
-              </div>
 
-              <div class="preference-input-container">
-                <label for="traffic_inefficiency_index">Convenient transportation (fast commuting and low congestion)</label>
+                <label for="traffic_inefficiency_index"><h2 class="subtitle">Convenient transportation</h2>
+                  <div class="description">(i.e. fast commuting and low congestion)</div>
+                </label>
                 <input type="range" min="0" max="10" id="traffic_inefficiency_index" class="preference-slider">
-              </div>
 
-
-
-              <div class="preference-input-container">
-                <label for="restaurant_price_index">Affordable dining out</label>
+                <label for="restaurant_price_index"><h2 class="subtitle">Affordable dining out</h2></label>
                 <input type="range" min="0" max="10" id="restaurant_price_index" class="preference-slider">
+                <br>
 
-              </div>
+              <input type="submit" id="submit-form" class="button" value="Explore" id="submit-button">
             </div>
-            <input type="submit" id="submit-form" class="button" value="Explore" id="submit-button">
+
           </form>
         </div>
       </div>
