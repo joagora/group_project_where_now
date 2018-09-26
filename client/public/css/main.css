@@ -33,7 +33,8 @@
 #form-container {
   width: 50%;
   margin: 20 auto;
-
+  background-color: white;
+  border-radius: 30px;
 }
 
 .preference-input-container label {
@@ -257,4 +258,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 .occupation-select {
 
+}
+
+#name {
+  border: 5px solid white;
+  width: 70%;
+  margin: 0 auto;
+  padding: 20;
+  color: white;
+  font-size: 79px;
 }
