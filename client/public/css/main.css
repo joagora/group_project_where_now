@@ -15,7 +15,6 @@
 
 }
 
-
 #preference-container {
   margin: auto;
   height: 10%;
@@ -72,6 +71,7 @@
   min-width: 110px;
   height: 200px;
   margin: 0 auto;
+  font-family: 'Playfair Display', serif;
 }
 
 tspan {
@@ -128,7 +128,6 @@ tspan {
 
 }
 
-
 #wrapper > div {
   border: 2px solid #747272;
   border-radius: 5px;
@@ -136,9 +135,6 @@ tspan {
   padding: 1em;
   color: #000000;
 }
-
-
-
 
 .box {
   width: 40%;
@@ -170,7 +166,6 @@ tspan {
 .more-button {
   float: right;
 }
-
 
 .overlay {
   position: fixed;
@@ -299,4 +294,8 @@ input[type="range"]::-webkit-slider-thumb {
   color: white;
   font-size: 25px;
   cursor: pointer;
+}
+
+.graph-container {
+  font-family: 'Playfair Display', serif;
 }
