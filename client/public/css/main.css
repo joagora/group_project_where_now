@@ -185,10 +185,19 @@ select {
   outline: none;
   text-align: left;
 }
-.more-button {
+
+
+.details-icon-container {
   float: right;
 }
 
+.fa-arrow-circle-right {
+  font-size: 40px;
+}
+
+a {
+  color: black;
+}
 
 .overlay {
   position: fixed;
@@ -382,6 +391,7 @@ h2.choose-preferences{
 
 }
 
-.fas {
-  font-size: 23px;
+#icon-container .fas {
+  margin-top: 5px;
+  font-size: 80px;
 }

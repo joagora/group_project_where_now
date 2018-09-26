@@ -17,7 +17,7 @@ ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
   const resultWrapper = document.querySelector('#wrapper');
   wrapper.classList.toggle('visible');
-  
+
   const detailsContainer = this.createDetailsContainer(countries);
 
 
@@ -135,18 +135,22 @@ ResultView.prototype.createGraph = function(country) {
 }
 
 ResultView.prototype.createButton = function() {
+  const iconContainer = document.createElement('div');
+  iconContainer.setAttribute('class', 'details-icon-container');
 
   const button = document.createElement('a');
   button.setAttribute('class', 'more-button');
   button.setAttribute('href', '#popup')
-  const icon = document.createElement('i');
+  iconContainer.appendChild(button);
 
+  const icon = document.createElement('i');
   icon.setAttribute('class', 'fas fa-arrow-circle-right');
   const paragraph = document.createElement('p');
-  icon.appendChild(paragraph);
+
+  iconContainer.appendChild(paragraph);
   paragraph.textContent = "View more details";
   button.appendChild(icon);
 
-  return button;
+  return iconContainer;
 }
 module.exports = ResultView;
