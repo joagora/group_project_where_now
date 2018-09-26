@@ -13,7 +13,7 @@ Map.prototype.bindEvents = function () {
 };
 Map.prototype.renderMap = function (countries) {
   let mapGeo = L.mapbox.map('mapid', 'mapbox.streets', { zoomControl: false })
-    .setView([51, 0], 1.7);
+    .setView([45, 20], 2);
     let popUps = L.mapbox.featureLayer().addTo(mapGeo)
 
   let nums = countries.length;
