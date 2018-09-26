@@ -131,11 +131,6 @@ CountryDetailsView.prototype.renderGraph = function(country) {
   return graphContainer;
 }
 
-// =======
-//   const capitalCityHeader = document.querySelector('.city-header');
-//   capitalCityHeader.textContent = country.capital;
-// }
-
 
 
 module.exports = CountryDetailsView;

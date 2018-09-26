@@ -191,9 +191,11 @@ select {
   float: right;
 }
 
-.fa-arrow-circle-right {
+.fa-arrow-circle-right, .fa-times {
   font-size: 40px;
 }
+
+
 
 a {
   color: black;
@@ -254,7 +256,7 @@ a {
 
 
 }
-.popup .close {
+.popup {
   position: absolute;
   top: 20px;
   right: 30px;
