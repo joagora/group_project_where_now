@@ -12,11 +12,64 @@ CountryDetailsView.prototype.bindEvents = function() {
 };
 
 CountryDetailsView.prototype.render = function(country) {
-  const countryHeader = document.querySelector('.country-header');
-  countryHeader.textContent = country.name;
+  this.container.innerHTML = ''
 
-  const capitalCityHeader = document.querySelector('.city-header');
-  capitalCityHeader.textContent = country.capital;
+  const closeButtonContainer = document.createElement('a')
+  const closeButtonIcon = document.createElement('i');
+  closeButtonIcon.setAttribute('class', 'fas fa-times')
+  closeButtonContainer.appendChild(closeButtonIcon)
+  closeButtonContainer.setAttribute('href', "#");
+  this.container.appendChild(closeButtonContainer);
+
+  const countryHeader = document.createElement('h1')
+  countryHeader.setAttribute('class', 'country-header');
+  countryHeader.textContent = country.name;
+  this.container.appendChild(countryHeader)
+
+  const countryPopulation = document.createElement('h2');
+  countryPopulation.setAttribute('class', 'country-population');
+  const populationText = `Population : ${country.population}`;
+  countryPopulation.textContent = populationText;
+  this.container.appendChild(countryPopulation)
+
+  const countryCurrencies = document.createElement('h2');
+  countryCurrencies.setAttribute('class', 'country-currencies');
+  const currenciesText = `Currency: ${country.currencies[0]['symbol']}, ${country.currencies[0]['name']}`;
+  countryCurrencies.textContent = currenciesText;
+  this.container.appendChild(countryCurrencies)
+
+  const countryRegion = document.createElement('h2');
+  countryRegion.setAttribute('class', 'country-region');
+  const regionText = `Region: ${country.region}`;
+  countryRegion.textContent = regionText;
+  this.container.appendChild(countryRegion)
+
+  const countryTimezones = document.createElement('h2');
+  countryTimezones.setAttribute('class', 'country-timezone');
+  const timezonesText = `Timezone: ${country.timezones}`;
+  countryTimezones.textContent = timezonesText;
+  this.container.appendChild(countryTimezones)
+
+  const countrySalary = document.createElement('h2');
+  countrySalary.setAttribute('class', 'country-salary');
+  const salaryText = `The Average Salary for a ${_____________}: ${country.salary}`;
+  countrySalary.textContent = salaryText;
+  this.container.appendChild(countrySalary);
+
+  const countryCapital = document.createElement('h2');
+  countryCapital.setAttribute('class', 'country-capital');
+  const capitalText = `Capital City : ${country.capital}`
+  countryCapital.textContent = capitalText;
+  this.container.appendChild(countryCapital)
+
+
+
+
+
+
+
+
+
 
 
 
