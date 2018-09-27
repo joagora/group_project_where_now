@@ -9,12 +9,19 @@ FormView.prototype.bindEvents = function() {
     event.preventDefault();
     const formValues = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', formValues);
-    this.hideForm()
+    this.hideForm();
+    this.displayName();
   })
 
   this.listenForFormIconClick();
 
 
+}
+
+FormView.prototype.displayName = function() {
+  const name = document.querySelector('#display-container');
+  name.classList.toggle('move-display-down');
+  name.classList.remove('move-display');
 }
 
 FormView.prototype.hideForm = function() {
