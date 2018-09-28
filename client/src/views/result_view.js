@@ -10,16 +10,22 @@ ResultView.prototype.bindEvents = function () {
       console.log("countries with salary", event.detail);
       this.render(event.detail);
     })
+
 };
 
 ResultView.prototype.render = function(countries) {
   this.resultContainer.textContent = "";
   const resultWrapper = document.querySelector('#wrapper');
   wrapper.classList.toggle('visible');
+
   const detailsContainer = this.createDetailsContainer(countries);
+
+
 }
 
 ResultView.prototype.createDetailsContainer = function(countries) {
+
+
   countries.forEach((country) => {
     this.createCountryDiv(country);
   })
@@ -33,6 +39,8 @@ ResultView.prototype.createCountryDiv = function(country) {
   const countryHeader = this.createCountryHeader(country);
   countryDiv.appendChild(countryHeader);
 
+
+
   const countryGraph = this.createGraph(country);
   countryDiv.appendChild(countryGraph);
 
@@ -41,15 +49,18 @@ ResultView.prototype.createCountryDiv = function(country) {
   moreButton.addEventListener('click', (event) => {
     PubSub.publish('ResultView:selected-country', country);
   })
+
 }
 
 ResultView.prototype.createCountryHeader = function(country) {
   const countryHeader = document.createElement('h1');
   countryHeader.textContent = country.name;
   return countryHeader;
+
 }
 
 ResultView.prototype.createGraph = function(country) {
+  console.log("COUNTRY IN GRAPHS", country);
   const graphContainer = document.createElement('div');
   graphContainer.setAttribute('class', 'graph-container');
   console.log(country.percentageValues);
@@ -131,22 +142,18 @@ ResultView.prototype.createGraph = function(country) {
 }
 
 ResultView.prototype.createButton = function() {
-  const iconContainer = document.createElement('div');
-  iconContainer.setAttribute('class', 'details-icon-container');
 
   const button = document.createElement('a');
   button.setAttribute('class', 'more-button');
   button.setAttribute('href', '#popup')
-  iconContainer.appendChild(button);
-
   const icon = document.createElement('i');
+
   icon.setAttribute('class', 'fas fa-arrow-circle-right');
   const paragraph = document.createElement('p');
-
-  iconContainer.appendChild(paragraph);
+  icon.appendChild(paragraph);
   paragraph.textContent = "View more details";
   button.appendChild(icon);
 
-  return iconContainer;
+  return button;
 }
 module.exports = ResultView;
