@@ -1,5 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
-const GEOCODE_API_KEY = require('../helpers/api_keys/geocoding_api_key.js');
+// const GEOCODE_API_KEY = require('../helpers/api_keys/geocoding_api_key.js');
 const Request = require('../helpers/request.js');
 
 const Geolocator = function() {
@@ -22,7 +22,9 @@ Geolocator.prototype.addGeolocation = function(countries) {
   countries.forEach((country) => {
     const countryName = country.name;
     const preparedCountryName = this.prepareInput(countryName);
-    const url = `http://www.mapquestapi.com/geocoding/v1/address?key=${GEOCODE_API_KEY}&location=${preparedCountryName}`;
+    // const url = `http://www.mapquestapi.com/geocoding/v1/address?key=${GEOCODE_API_KEY}&location=${preparedCountryName}`;
+    const url = `http://localhost:3000/geolocation?countryName=${preparedCountryName}`
+
     const request = new Request(url);
 
     promisesArray.push(request.get()
@@ -61,7 +63,7 @@ Geolocator.prototype.validateLocation = function(locations) {
     if(location.geocodeQuality === "COUNTRY") {
       validLocation = location;
     }
-  
+
   })
   return validLocation;
 }
