@@ -14,27 +14,25 @@ Jobs.prototype.bindEvents = function(){
     const countriesDetails = event.detail;
     this.countriesArray = countriesDetails;
     this.getSalaryDetails(countriesDetails);
-
   })
   PubSub.subscribe('JobsSelectView:selected-job-title-ready', (event) => {
     this.jobTitleSelected = event.detail;
   })
-
 }
 
 Jobs.prototype.getData = function(){
   const url = `https://api.teleport.org/api/countries/iso_alpha2:PL/salaries/`;
   const request = new Request(url);
   request.get()
-    .then((data) => {
-      this.jobsSalaries = data.salaries;
+  .then((data) => {
+    this.jobsSalaries = data.salaries;
+  })
+  .then((data) => {
+    const jobTitles = this.jobsSalaries.map((jobElement) => {
+      return jobElement.job.title;
     })
-    .then((data) => {
-      const jobTitles = this.jobsSalaries.map((jobElement) => {
-        return jobElement.job.title;
-      })
-      PubSub.publish('Jobs:categories-labels-ready', jobTitles);
-    })
+    PubSub.publish('Jobs:categories-labels-ready', jobTitles);
+  })
 }
 
 Jobs.prototype.getSalaryDetails = function(countries) {
@@ -48,19 +46,16 @@ Jobs.prototype.getSalaryDetails = function(countries) {
     promisesArray.push(request.get()
     .then((data) => {
       const salary = data.salaries;
-      // console.log('salaryyyyy', salary);
       const salaryForJobTitle = this.findSalaryForJobTitle(salary, this.jobTitleSelected);
-      // console.log('salary for job title', salaryForJobTitle);
       country['salary'] = salaryForJobTitle;
     })
     .catch(console.error));
   })
   Promise.all(promisesArray)
-    .then((data) => {
-      console.log("countries sent by jobs", countries);
-
-      PubSub.publish('Jobs:countries-with-salary-ready', countries);
-    })
+  .then((data) => {
+    console.log("countries sent by jobs", countries);
+    PubSub.publish('Jobs:countries-with-salary-ready', countries);
+  })
 }
 
 
@@ -75,4 +70,5 @@ Jobs.prototype.findSalaryForJobTitle = function(salaries, jobTitle) {
   })
   return foundSalary;
 }
-  module.exports = Jobs;
+
+module.exports = Jobs;

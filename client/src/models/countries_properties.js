@@ -1,5 +1,4 @@
 const PubSub = require('../helpers/pub_sub.js');
-const NUMBEO_API_KEY = require('../helpers/api_keys/numbeo_api_key.js');
 const Request = require('../helpers/request.js');
 
 const CountriesProperties = function() {
@@ -17,7 +16,8 @@ CountriesProperties.prototype.getData = function(countries) {
   this.countriesList = countries;
   const countryProperties = countries.forEach((country) => {
     const countryName = country.name;
-    const url = `https://www.numbeo.com/api/country_indices?api_key=${NUMBEO_API_KEY}&country=${countryName}`;
+    // const url = `https://www.numbeo.com/api/country_indices?api_key=${NUMBEO_API_KEY}&country=${countryName}`;
+    const url = `http://localhost:3000/numbeo?countryName=${countryName}`
     const request = new Request(url);
     request.get()
       .then((data) => {
