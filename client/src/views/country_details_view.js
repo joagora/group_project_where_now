@@ -33,11 +33,17 @@ CountryDetailsView.prototype.render = function(country) {
   closeButtonContainer.setAttribute('href', "#");
   this.container.appendChild(closeButtonContainer);
 
+
+  const countryFlag = document.createElement('img');
+  countryFlag.setAttribute('class','country-flag');
+  countryFlag.src = country.flag;
+  console.log(country.flag);
+  this.container.appendChild(countryFlag);
+
   const countryHeader = document.createElement('h1')
   countryHeader.setAttribute('class', 'country-header');
   countryHeader.textContent = country.name;
   this.container.appendChild(countryHeader);
-
 
 
   const information = document.createElement('h2')
@@ -47,19 +53,14 @@ CountryDetailsView.prototype.render = function(country) {
   who outnumber you ${population} to 1!
   It’ll be totally worth it though, as an experienced <span class="font-underline">${jobTitle}</span>, the average wage is <span class="font-underline">${salaryShortened}</span>
   USD per year in your new adopted home!</span>`
-  // this.container.appendChild(information);
+  this.container.appendChild(information);
 
-  const countryFlag = document.createElement('img');
-  countryFlag.setAttribute('class','country-flag');
-  countryFlag.src = country.flag;
-  console.log(country.flag);
-  // this.container.appendChild(countryFlag);
 
-  const countryFlagInfoDetails = document.createElement('div');
-  countryFlagInfoDetails.setAttribute('class', 'flex-country-info');
-  this.container.appendChild(countryFlagInfoDetails);
-  countryFlagInfoDetails.appendChild(information);
-  countryFlagInfoDetails.appendChild(countryFlag);
+  // const countryFlagInfoDetails = document.createElement('div');
+  // countryFlagInfoDetails.setAttribute('class', 'flex-country-info');
+  // this.container.appendChild(countryFlagInfoDetails);
+  // countryFlagInfoDetails.appendChild(information);
+  // countryFlagInfoDetails.appendChild(countryFlag);
 }
 
 
@@ -70,7 +71,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
   graphContainer.setAttribute('class', 'big-graph-container');
   graphContainer.classList.add('graph-big');
   const graphView = new GraphView(graphContainer);
-  graphView.createGraph(country, 250, 800);
+  graphView.createGraph(country, 250, 600);
   // return graphContainer;
 
   //

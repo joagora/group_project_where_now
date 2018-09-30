@@ -32,6 +32,37 @@ GraphView.prototype.createGraph = function(country, height, width) {
     title: {
     text: "asdas",
   },
+  responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 400
+        },
+        chartOptions: {
+            legend: {
+                align: 'center',
+                verticalAlign: 'bottom',
+                layout: 'horizontal'
+            },
+            yAxis: {
+                labels: {
+                    align: 'left',
+                    x: 0,
+                    y: -5
+                },
+                title: {
+                    text: null
+                }
+            },
+            subtitle: {
+                text: null
+            },
+            credits: {
+                enabled: false
+            }
+        }
+    }]
+},
+
 
     categories: ['Crime', 'Transport', 'Healthcare', 'Pollution', 'Weather', 'Restaurants', 'Rent'],
     labels: {
@@ -41,6 +72,7 @@ GraphView.prototype.createGraph = function(country, height, width) {
       }
     }
   },
+
 
   yAxis: {
     gridLineColor: 'transparent',
