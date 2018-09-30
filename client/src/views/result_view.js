@@ -61,7 +61,7 @@ ResultView.prototype.createGraph = function(country) {
   const graphContainer = document.createElement('div');
   graphContainer.setAttribute('class', 'graph-container');
   const graphView = new GraphView(graphContainer);
-  graphView.createGraph(country, 300, 400);
+  graphView.createGraph(country, 350, 400);
   return graphContainer;
 }
 

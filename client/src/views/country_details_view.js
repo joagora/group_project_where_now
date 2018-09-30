@@ -71,7 +71,7 @@ CountryDetailsView.prototype.renderGraph = function(country) {
   graphContainer.setAttribute('class', 'big-graph-container');
   graphContainer.classList.add('graph-big');
   const graphView = new GraphView(graphContainer);
-  graphView.createGraph(country, 250, 600);
+  graphView.createGraph(country, 400, 550);
   // return graphContainer;
 
   //

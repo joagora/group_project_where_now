@@ -179,8 +179,15 @@ select {
   float: right;
 }
 
-.fa-arrow-circle-right, .fa-times {
+.fa-times {
   font-size: 40px;
+  margin: 10px;
+}
+
+.fa-arrow-circle-right {
+  font-size: 20px;
+  float: right;
+  margin-bottom: 30px;
 }
 
 a {
@@ -229,7 +236,6 @@ a {
 }
 
 .popup h2 {
-  margin-top: 0;
   width: 40%;
   text-align: left;
   size:25;
@@ -319,6 +325,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   width: 40%;
   z-index: 3;
   max-height: 40%;
+  margin: 0 auto 20px auto;
   box-shadow: 0px 0px 19px 0px rgba(29, 29, 29, 1);
 }
 
@@ -411,7 +418,7 @@ h2.choose-preferences{
   font-size: 80px;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 760px) {
   .popup {
     display: flex;
     flex-direction: column;
@@ -436,7 +443,7 @@ h2.choose-preferences{
 
   .popup h1 {
     text-align: center;
-    margin-top: 40px auto 0 auto;
+    margin: 40px auto 0 auto;
   }
 
   .popup h2 {
@@ -451,5 +458,30 @@ h2.choose-preferences{
 
   .highcharts-root {
     width: auto;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  #wrapper {
+    height: 85vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4,1fr);
+  }
+
+  #mapid {
+
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    z-index: 0;
+  }
+
+  #result {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 5;
+
   }
 }
