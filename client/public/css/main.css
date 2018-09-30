@@ -51,9 +51,8 @@
   transition: transform 1s ease-in-out;
 }
 
-#display-container-top {
-  transform: translateY(45%);
-  transition: 1s linear ;
+.display-container-top {
+  transform: translateY(30%);
 }
 
 #instructions {
@@ -384,7 +383,7 @@ h2.choose-preferences{
 }
 
 .big-graph-container {
-  margin-top: 5%;
+  margin-top: 2%;
   width: 100%;
 }
 

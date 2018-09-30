@@ -10,6 +10,7 @@ FormView.prototype.bindEvents = function() {
     const formValues = this.getSubmittedValues(event.target);
     PubSub.publish('FormView:form-submitted', formValues);
     this.hideForm()
+    this.showTitleOnTopOfMap();
   })
 
   this.listenForFormIconClick();
@@ -76,5 +77,10 @@ FormView.prototype.getSlidersValues = function(sliders) {
   return valuesObject;
 }
 
+FormView.prototype.showTitleOnTopOfMap = function() {
+  const displayContainer = document.querySelector('#display-container');
+  displayContainer.classList.toggle('display-container-top');
+  displayContainer.classList.remove('move-display');
+};
 
 module.exports = FormView;
