@@ -24,24 +24,6 @@ app.get('/numbeo', (req, res) => {
    .then(data => res.json(data));
 });
 
-app.get('/geolocation', (req, res) => {
-  const url = `http://www.mapquestapi.com/geocoding/v1/address?key=${GEOCODE_API_KEY}&location=${preparedCountryName}`;
-  fetch(url)
-   .then(jsonData => jsonData.json())
-   .then(data => res.json(data));
-});
-
-MongoClient.connect('mongodb://localhost:27017')
-  .then((client) => {
-    const db = client.db('countries');
-    const countryListCollection = db.collection('country_list');
-    const countriesRouter = createRouter(countryListCollection);
-    app.use('/api/countries', countriesRouter);
-
-  })
-  .catch(console.error);
-
-
 app.listen(3000, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
