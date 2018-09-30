@@ -69,7 +69,7 @@ FormView.prototype.getSlidersValues = function(sliders) {
   const sliderArray = Array.from(sliders);
   const valuesObject = sliderArray.map((element) => {
     let object = {};
-    object['attribute'] = element.id;
+    object['attributeName'] = element.id;
     object['value'] = element.value;
     return object;
   });

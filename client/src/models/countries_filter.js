@@ -20,14 +20,6 @@ CountriesFilter.prototype.bindEvents = function() {
   })
 }
 
-CountriesFilter.prototype.getFilteredCountries = function(countries, attributesToSortBy) {
-  const filteredByQualityOfLife = this.filterByQualityOfLife(countries, attributesToSortBy);
-  const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, attributesToSortBy);
-  const maxMinValues = this.getMaxMinOfIndexes(filteredByQualityOfLife, attributesToSortBy);
-  const countriesWithTransformedValues = this.transformIndexedOfFilteredCountriesIntoPercentages(filteredByPreferences, attributesToSortBy, maxMinValues);
-  return countriesWithTransformedValues;
-}
-
 CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
   const sortedValues = valuesToSort.sort( (a, b) => {
     return b.value - a.value;
@@ -59,14 +51,10 @@ CountriesFilter.prototype.filterInvalidCountries = function(countries, attribute
 
 CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort, attributes) {
   let filteredCountries = countriesToSort;
-  console.log("filteredCountries", filteredCountries);
-  // let attributesToSortBy = attributes;
   for(attribute of attributes) {
-    const attributeName = attribute.attribute;
-    console.log(attributeName);
+    const attributeName = attribute.attributeName;
     if(filteredCountries.length < 10){
       const countriesToDisplay = filteredCountries.slice(0, 5);
-      console.log("COUNTRIES AFTER FILTERING", countriesToDisplay);
       return countriesToDisplay;
     }else {
       //TODO: change naming of attribute to attributeName in the object
@@ -83,26 +71,27 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
       }
 
       filteredCountries = this.halfDataSet(filteredCountries);
-      console.log(`FILTERED COUNTRIES by ${attributeName}`, filteredCountries);
-      // attributesToSortBy.shift();
-      // return this.filterCountriesByPrefences(filteredCountries, attributes);
     }
   }
 
 
   }
 
-
-
-  // return this.filteredCountries;
-
-
+  CountriesFilter.prototype.getFilteredCountries = function(countries, attributesToSortBy) {
+    const filteredByQualityOfLife = this.filterByQualityOfLife(countries, attributesToSortBy);
+    const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, attributesToSortBy);
+    const maxMinValues = this.getMaxMinOfIndexes(filteredByQualityOfLife, attributesToSortBy);
+    console.log(maxMinValues);
+    const countriesWithTransformedValues = this.transformIndexedOfFilteredCountriesIntoPercentages(filteredByPreferences, attributesToSortBy, maxMinValues);
+    return countriesWithTransformedValues;
+  }
 
 CountriesFilter.prototype.getMaxMinOfIndexes = function(countriesToSort, attributes) {
 
   const attributesArray = attributes.map(function(attribute) {
-    return attribute.attribute;
+    return attribute.attributeName;
   });
+  console.log(attributes);
 
   let maxMinForAttribute = null;
   let countryAttributes = {}
@@ -122,6 +111,7 @@ CountriesFilter.prototype.getMaxMinOfIndexes = function(countriesToSort, attribu
     attributeObject['attributeValues'] = attributeMaxMinValues;
     countryAttributes[attribute] = attributeObject;
   })
+  console.log("country attrubytes", countryAttributes);
   return countryAttributes;
 }
 
@@ -129,12 +119,13 @@ CountriesFilter.prototype.transformIndexedOfFilteredCountriesIntoPercentages = f
 
   countries.forEach((country) => {
     const attributesArray = attributes.map(function(attribute) {
-      return attribute.attribute;
+      return attribute.attributeName;
     });
+    console.log(attributesArray);
     let percentages = {};
-    // attributesArray.forEach((attributeName) => {
     attributesArray.forEach((attribute) => {
       const currentAttribute = attribute;
+      console.log("maxMin values", maxMinValues);
       const indexValueForCountry = country.details[currentAttribute];
       const maxValueForIndex = maxMinValues[currentAttribute].attributeValues.max;
       const minValueForIndex = maxMinValues[currentAttribute].attributeValues.min;
@@ -143,11 +134,7 @@ CountriesFilter.prototype.transformIndexedOfFilteredCountriesIntoPercentages = f
       const resultRoundedDown = Math.floor(result);
       percentages[currentAttribute] = resultRoundedDown;
     })
-
-
-
     country['percentageValues'] = percentages;
-
   })
   return countries;
 }
