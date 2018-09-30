@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const map = new Map();
   map.bindEvents();
 
-  const cities = new Cities();
-  cities.bindEvents();
+  // const cities = new Cities();
+  // cities.bindEvents();
 
   const countryViewContainer = document.querySelector('.popup')
   const countryDetailsView = new CountryDetailsView(countryViewContainer);

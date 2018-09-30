@@ -27,7 +27,7 @@ CountriesFilter.prototype.sortFormValues = function(valuesToSort) {
 }
 
 
-CountriesFilter.prototype.filterByQualityOfLife = function(countriesToSort) {
+CountriesFilter.prototype.sortByQualityOfLife = function(countriesToSort) {
   let validCountries = this.filterInvalidCountries(countriesToSort, "quality_of_life_index");
   const sortedCountries = validCountries.sort((a, b) => {
     return b.details["quality_of_life_index"] - a.details["quality_of_life_index"];
@@ -72,14 +72,14 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
     }
   }
 
-  const bestByQualityOfLife = this.filterByQualityOfLife(filteredCountries)
+  const bestByQualityOfLife = this.sortByQualityOfLife(filteredCountries)
   const countriesToDisplay = bestByQualityOfLife.slice(0, 5);
   return countriesToDisplay;
 
   }
 
   CountriesFilter.prototype.getFilteredCountries = function(countries, attributesToSortBy) {
-    const filteredByQualityOfLife = this.filterByQualityOfLife(countries, attributesToSortBy);
+    const filteredByQualityOfLife = this.sortByQualityOfLife(countries, attributesToSortBy);
     const valuesWithoutZero = this.eliminateAttributesWithValueZero(attributesToSortBy);
     console.log(`values without 0`, valuesWithoutZero);
     const filteredByPreferences = this.filterCountriesByPrefences(filteredByQualityOfLife, valuesWithoutZero);
