@@ -72,6 +72,9 @@ CountriesFilter.prototype.filterCountriesByPrefences = function(countriesToSort,
     }
   }
 
+  const bestByQualityOfLife = this.filterByQualityOfLife(filteredCountries)
+  const countriesToDisplay = bestByQualityOfLife.slice(0, 5);
+  return countriesToDisplay;
 
   }
 
