@@ -34,7 +34,7 @@
   margin: 20 auto;
   background-color: white;
   border-radius: 30px;
-  transform: translateY(-20%)
+  transform: translateY(-40%);
 }
 
 .preference-input-container label {
@@ -52,7 +52,8 @@
 }
 
 .display-container-top {
-  transform: translateY(30%);
+  position: absolute;
+  top: 20px;
 }
 
 #instructions {
@@ -61,7 +62,13 @@
   text-align: center;
   color: white;
   font-size: 2em;
-  margin: 3% auto;
+  text-shadow: 2px 2px black;
+  margin: 5% auto;
+  line-height:
+}
+
+.icon-description {
+  letter-spacing: 1px;
 }
 
 #graph-container .highcharts-container {
@@ -340,9 +347,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   text-shadow: 2px 2px black;
 }
 
-#instructions{
-  text-shadow: 2px 2px black;
-}
+
 
 .not-visible {
   display: none;
@@ -457,6 +462,24 @@ h2.choose-preferences{
 
   .highcharts-root {
     width: auto;
+  }
+
+  #name {
+    font-size: 50px;
+    width: 85%;
+  }
+
+  #display-container {
+
+    position: relative;
+    top: 10%;
+  }
+
+  #instructions {
+    width: 90%;
+    margin: 20% auto;
+    line-height: 65px;
+    letter-spacing: 2px;
   }
 }
 
