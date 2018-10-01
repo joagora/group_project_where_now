@@ -27,7 +27,5 @@
     "mongodb": "^3.1.0",
     "node-fetch": "^2.2.0"
   },
-  "engines": {
-    "node": "4.1.1"
-  },
+
 }
