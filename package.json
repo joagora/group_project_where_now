@@ -1,6 +1,9 @@
 {
   "name": "group_project_where_now",
   "version": "1.0.0",
+  "engines": {
+  "node": "8.9.4"
+}
   "description": "",
   "main": "server/server.js",
   "scripts": {
