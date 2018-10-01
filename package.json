@@ -2,16 +2,14 @@
   "name": "group_project_where_now",
   "version": "1.0.0",
   "description": "",
-  "main": "web.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
     "test": "mocha client/src/models/specs",
     "server:dev": "nodemon server/server.js",
     "build": "webpack -w"
   },
-  "keywords": [
-    "heroku"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
