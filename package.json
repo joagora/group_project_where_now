@@ -2,7 +2,7 @@
   "name": "group_project_where_now",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "web.js",
   "scripts": {
     "start": "node server/server.js",
     "test": "mocha client/src/models/specs",
