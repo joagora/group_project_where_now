@@ -2,9 +2,9 @@
   "name": "group_project_where_now",
   "version": "1.0.0",
   "engines": {
-  "node": "8.9.4",
-  "npm": "6.4.1"
-},
+    "node": "8.9.4",
+    "npm": "6.4.1"
+  },
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -31,5 +31,4 @@
     "mongodb": "^3.1.0",
     "node-fetch": "^2.2.0"
   }
-
 }
