@@ -1,7 +1,6 @@
 const Request = require('../helpers/request');
 const PubSub = require('../helpers/pub_sub');
 
-
 const Jobs = function(){
   this.jobsSalaries = null;
   this.jobTitleSelected = null;
