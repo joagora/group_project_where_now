@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
 const fetch = require('node-fetch');
 const NUMBEO_API_KEY = require('./helpers/api_keys/numbeo_api_key.js');
 const GEOCODE_API_KEY = require('./helpers/api_keys/geocoding_api_key.js');

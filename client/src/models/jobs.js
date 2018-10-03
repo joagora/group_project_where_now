@@ -1,7 +1,5 @@
 const Request = require('../helpers/request');
 const PubSub = require('../helpers/pub_sub');
-const ADZUNA_API_KEY = require('../helpers/api_keys/adzuna_api_key.js');
-const ADZUNA_ID = require('../helpers/api_keys/adzuna_id.js');
 
 const Jobs = function(){
   this.jobsSalaries = null;
