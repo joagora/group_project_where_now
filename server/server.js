@@ -27,6 +27,6 @@ app.get('/numbeo', (req, res) => {
    .then(data => res.json(data));
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
