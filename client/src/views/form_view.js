@@ -24,19 +24,19 @@ FormView.prototype.hideForm = function() {
   form.classList.remove('visible');
 
   const formContainer = document.querySelector('#form-container');
-  formContainer.classList.toggle('hidden');
+  formContainer.classList.toggle('not-visible');
   formContainer.classList.remove('visible');
 }
 
 FormView.prototype.listenForFormIconClick = function() {
   const iconContainer = document.querySelector('#icon-container');
   iconContainer.addEventListener('click', (event) => {
-    iconContainer.classList.toggle('hidden');
+    iconContainer.classList.toggle('not-visible');
 
     const form = document.querySelector('#form-container');
     form.classList.remove('hidden');
     const instructionsParagraph = document.querySelector('#instructions');
-    instructionsParagraph.classList.toggle('hidden');
+    instructionsParagraph.classList.toggle('not-visible');
     instructionsParagraph.classList.remove('visible');
 
     this.slideInForm();
