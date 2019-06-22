@@ -1,3 +1,5 @@
+Heroku link here: https://where-now-app.herokuapp.com/
+
 #MVP
 1. The user should be able to fill in a form about his/her occupation, current location, priorities (environmental issues, cost of living, education, transportation, safety) in looking for a place to live;
 2. The user should receive a list of places that match their preferences;
