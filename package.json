@@ -16,7 +16,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "webpack": "^4.14.0",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
